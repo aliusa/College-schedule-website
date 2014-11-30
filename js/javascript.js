@@ -45,10 +45,26 @@ $(document).ready(function(){
 		}
 	});/**/
 
-	window.addEvent('load', function() {
-		new DatePicker('.demo_vista', { pickerClass: 'datepicker_vista' });
-		new DatePicker('.demo_dashboard', { pickerClass: 'datepicker_dashboard' });
-		new DatePicker('.demo_jqui', { pickerClass: 'datepicker_jqui', positionOffset: { x: 0, y: 5 } });
-		new DatePicker('.demo', { positionOffset: { x: 0, y: 5 }});
-	});
+	//gauna duomenis iš `courses_names` lentelės duomenų bazėje
+	//ir atvaizduoja `course_title` input formos pasirinkytyje
+	$.ajax({
+		url: "core/func/searchCourse.php",
+		data: {id: 1},
+		dataType: "json",
+		success: function(response){
+			var data = $(response).map(function(){
+				//return columns of table
+				return {value: this.course_title, id: this.course_id};
+			}).get();
+
+			//autofills input form with selected id
+			$('#course').autocomplete({
+				source: data,
+				minLength: 0,
+				select: function(event,ui){
+					$('input#hiddenCourse').val(ui.item.id);
+				}
+			});
+		}
+	});/**/
 });

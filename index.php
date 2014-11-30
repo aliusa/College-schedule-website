@@ -24,6 +24,7 @@ $times = $time->fetch_all();
 						<tr>
 							<td>
 								<input id="group" name="group" type="text" placeholder="grupė" autocomplete="off"/><br/>
+								<input id="course" name="course" type="text" placeholder="dalykas" autocomplete="off"/><br/>
 								<input id="staff" name="staff" type="text" placeholder="dėstytojas" autocomplete="off"/><br/>
 								<input type="date" /><br/>
 								<input type="submit" name="Pateikti" /><input type="reset" value="Atšaukti">
@@ -36,7 +37,9 @@ $times = $time->fetch_all();
 										}
 									?>
 								</select>
-								<input id="hiddenGroup" class="hidden" /><input id="hiddenStaff" class="hidden" />
+								<input id="hiddenGroup" class="hidden" />
+								<input id="hiddenStaff" class="hidden" />
+								<input id="hiddenCourse" class="hidden" />
 							</td>
 					</form>
 				</table>
@@ -53,11 +56,11 @@ $times = $time->fetch_all();
 					$text .= $schedule['staff_firstName'] . " " . $schedule['staff_lastName'];
 					$text .= ")<br/>" . $schedule['s_postfixText'];
 				?>
-				<tr>
-					<td><?=$schedule['time_time'];?></td>
-					<td><?=$text;?></td>
-					<td><?=$schedule['class_class'];?></td>
-				</tr>
+					<tr>
+						<td><?=$schedule['time_time'];?></td>
+						<td><?=$text;?></td>
+						<td><?=$schedule['class_class'];?></td>
+					</tr>
 				<?php
 				}
 				?>
