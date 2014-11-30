@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	var employees = ["Captain America","Iron Man", "Hulk", "Thor"];
+	//gauna duomenis iš `groups` lentelės duomenų bazėje
+	//ir atvaizduoja `group_short` input formos pasirinkytyje
 	$.ajax({
 		url: "core/func/searchGroup.php",
 		data: {id: 1},
@@ -19,6 +20,8 @@ $(document).ready(function(){
 		}
 	});/**/
 
+	//gauna duomenis iš `staff` lentelės duomenų bazėje
+	//ir atvaizduoja `staff_displayName` input formos pasirinkytyje
 	$.ajax({
 		url: "core/func/searchStaff.php",
 		data: {id: 1},
