@@ -1,0 +1,51 @@
+html, body {
+	margin:0px;
+	border:0px;
+    background-color: #FFFBE2;
+	font:16px Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*--------------------------------------*/
+
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    /*margin-top: calc(50% - 30%);/**/
+    text-align: center;
+}
+
+/*----------------login----------------------*/
+/*#loginForm input{
+	border: 1px solid #5C314F;
+}
+#loginForm input[type="text"], #loginForm input[type="password"] {
+	width:200px;
+	height:10px;
+	padding:10px;
+}
+#loginForm input[type="password"] {
+	margin-top: -1px;
+}
+#loginForm input[type="submit"] {
+	width:222px;
+	height:30px;
+	margin-top: -1px;
+	background-color: #5C314F;
+}/**/
+
+#pickTime {
+	height:130px;
+}
+/*----------------table----------------------*/
+.scheduleTable, #addTable {
+	text-align: center;
+	border-collapse:collapse;
+}
+th, td {
+	border: 1px solid black;
+	padding: 5px 10px 5px 10px;
+}
