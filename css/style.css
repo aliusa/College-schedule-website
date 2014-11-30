@@ -37,11 +37,22 @@ a {
 	background-color: #5C314F;
 }/**/
 
+input[id=staff] {
+	width:200px;
+}
+
 #pickTime {
 	height:130px;
 }
+.hidden {
+	display: none;
+}
+input.date {
+	width: 150px;
+	color: #000;
+}
 /*----------------table----------------------*/
-.scheduleTable, #addTable {
+.scheduleTable, #addTable table {
 	text-align: center;
 	border-collapse:collapse;
 }

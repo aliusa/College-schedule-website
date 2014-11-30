@@ -13,7 +13,5 @@
 	$row = $stmt->fetchAll();
 	$error = $stmt->errorInfo();
 	//echo $error[2];
-	//var_dump($row);
-	//echo "<hr>";
 	echo json_encode($row);
 ?>

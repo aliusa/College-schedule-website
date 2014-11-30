@@ -12,11 +12,11 @@ $(document).ready(function(){
 			}).get();
 
 			//autofills input form with selected id
-			$('#name').autocomplete({
+			$('#group').autocomplete({
 				source: data,
 				minLength: 0,
 				select: function(event,ui){
-					$('input#id').val(ui.item.id);
+					$('input#hiddenGroup').val(ui.item.id);
 				}
 			});
 		}
@@ -39,9 +39,16 @@ $(document).ready(function(){
 				source: data,
 				minLength: 0,
 				select: function(event,ui){
-					$('input#id').val(ui.item.id);
+					$('input#hiddenStaff').val(ui.item.id);
 				}
 			});
 		}
 	});/**/
+
+	window.addEvent('load', function() {
+		new DatePicker('.demo_vista', { pickerClass: 'datepicker_vista' });
+		new DatePicker('.demo_dashboard', { pickerClass: 'datepicker_dashboard' });
+		new DatePicker('.demo_jqui', { pickerClass: 'datepicker_jqui', positionOffset: { x: 0, y: 5 } });
+		new DatePicker('.demo', { positionOffset: { x: 0, y: 5 }});
+	});
 });

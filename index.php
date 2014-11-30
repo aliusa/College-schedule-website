@@ -10,25 +10,36 @@ $times = $time->fetch_all();
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css">
+	<link rel="stylesheet" href="css/autocomplete.css">
+    <script src="js/jquery-ui-1.8.19.dialog.min.js"></script>	
 </head>
 <body>
 	<div id="wrapper">
 			<div id="addTable">
-				<form class="form-horizontal" role="form" method="GET">
-					<input id="name" name="name" type="text" placeholder="grupė" autocomplete="off"/><br/>
-					<input id="staff" name="staff" type="text" placeholder="dėstytojas" autocomplete="off"/><br/>
-					<input type="date" />
-					<select id="pickTime" name="time" multiple>
-						<?php
-							foreach ($times as $time => $v) {
-								echo "<option value=$time>".$v[1]."</option>";
-							}
-						?>
-					</select>
-					<br/>
-					<input type="submit" name="submit" />
-				</form>
+				<table>
+					<form class="form-horizontal" role="form" method="GET">
+						<tr>
+							<td>
+								<input id="group" name="group" type="text" placeholder="grupė" autocomplete="off"/><br/>
+								<input id="staff" name="staff" type="text" placeholder="dėstytojas" autocomplete="off"/><br/>
+								<input type="date" /><br/>
+								<input type="submit" name="Pateikti" /><input type="reset" value="Atšaukti">
+							</td>
+							<td>
+								<select id="pickTime" name="time" multiple>
+									<?php
+										foreach ($times as $time => $v) {
+											echo "<option value=$time>".$v[1]."</option>";
+										}
+									?>
+								</select>
+								<input id="hiddenGroup" class="hidden" /><input id="hiddenStaff" class="hidden" />
+							</td>
+					</form>
+				</table>
 			</div>
 		<table class="scheduleTable">
 			<thead><tr><th>Laikas</th><th>Paskaita</th><th>Kabinetas</th></tr></thead>
@@ -53,9 +64,8 @@ $times = $time->fetch_all();
 			</tbody>
 		</table>
 	</div>
-
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery-ui-1.10.4.custom.autocomplete.min.js"></script>
+	<script src="js/jquery-2.1.1.min.js"></script>
 	<script src="js/javascript.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.autocomplete.min.js"></script>
 </body>
 </html>
