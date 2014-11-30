@@ -7,9 +7,11 @@ $(document).ready(function(){
 		dataType: "json",
 		success: function(response){
 			var data = $(response).map(function(){
+				//return columns of table
 				return {value: this.group_short, id: this.group_id};
 			}).get();
 
+			//autofills input form with selected id
 			$('#name').autocomplete({
 				source: data,
 				minLength: 0,
@@ -28,9 +30,11 @@ $(document).ready(function(){
 		dataType: "json",
 		success: function(response){
 			var data = $(response).map(function(){
+				//return columns of table
 				return {value: this.staff_displayName, id: this.staff_id};
 			}).get();
 
+			//autofills input form with selected id
 			$('#staff').autocomplete({
 				source: data,
 				minLength: 0,
