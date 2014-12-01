@@ -1,4 +1,4 @@
 scheduler
 =========
 
-Front end for Scheduler
+Classes schedule organizer.
