@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	//gauna duomenis iš `groups` lentelės duomenų bazėje
+	//gets data from `groups` table
 	//ir atvaizduoja `group_short` input formos pasirinkytyje
 	$.ajax({
 		url: "core/func/searchGroup.php",
@@ -22,7 +22,7 @@ $(document).ready(function(){
 		}
 	});/**/
 
-	//gauna duomenis iš `staff` lentelės duomenų bazėje
+	//gets data from `staff` table
 	//ir atvaizduoja `staff_displayName` input formos pasirinkytyje
 	$.ajax({
 		url: "core/func/searchStaff.php",
@@ -45,7 +45,7 @@ $(document).ready(function(){
 		}
 	});/**/
 
-	//gauna duomenis iš `courses_names` lentelės duomenų bazėje
+	//gets data from `courses_names` table
 	//ir atvaizduoja `course_title` input formos pasirinkytyje
 	$.ajax({
 		url: "core/func/searchCourse.php",

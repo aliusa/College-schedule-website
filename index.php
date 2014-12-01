@@ -1,9 +1,9 @@
 <?php
 include_once ('core/connections.php');
-include_once ('core/func/schedule.php');
+include_once ('core/func/schedule.php'); //Schedule class
 $schedule = New Schedule;
 $schedules = $schedule->fetch_all();
-include_once ('core/func/time.php');
+include_once ('core/func/time.php'); //Time class
 $time = New Time;
 $times = $time->fetch_all();
 ?>
@@ -14,7 +14,7 @@ $times = $time->fetch_all();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css">
 	<link rel="stylesheet" href="css/autocomplete.css">
-    <script src="js/jquery-ui-1.8.19.dialog.min.js"></script>	
+    <script src="js/jquery-ui-1.8.19.dialog.min.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -23,17 +23,17 @@ $times = $time->fetch_all();
 					<form class="form-horizontal" role="form" method="GET">
 						<tr>
 							<td>
-								<input id="group" name="group" type="text" placeholder="grupė" autocomplete="off"/><br/>
-								<input id="course" name="course" type="text" placeholder="dalykas" autocomplete="off"/><br/>
-								<input id="staff" name="staff" type="text" placeholder="dėstytojas" autocomplete="off"/><br/>
+								<input id="group" name="group" type="text" placeholder="grupė" autocomplete="off" /><br/>
+								<input id="course" name="course" type="text" placeholder="dalykas" autocomplete="off" /><br/>
+								<input id="staff" name="staff" type="text" placeholder="dėstytojas" autocomplete="off" /><br/>
 								<input type="date" /><br/>
-								<input type="submit" name="Pateikti" /><input type="reset" value="Atšaukti">
+								<input type="submit" name="Pateikti" /><input type="reset" value="Atšaukti" />
 							</td>
 							<td>
-								<select id="pickTime" name="time" multiple>
+								<select id="pickTime" name="time" multiple> <?php // for easier/faster managing user can select multiple times at once ?>
 									<?php
 										foreach ($times as $time => $v) {
-											echo "<option value=$time>".$v[1]."</option>";
+											echo "<option value=$time>".$v[1]."</option>"; //0-id, 1-time
 										}
 									?>
 								</select>
@@ -49,19 +49,18 @@ $times = $time->fetch_all();
 			<tbody>
 				<?php
 				foreach ($schedules as $schedule) {
+					//if s_prefixText is, then display it
 					$text = ($schedule['s_prefixText'] !== "") ? "<b>".$schedule['s_prefixText']."</b><br/>" : "";
-					$text .= $schedule['course_title'];
-					$text .= "<br/>(";
-					$text .= ($schedule['staff_prefix'] !== "") ? $schedule['staff_prefix']." " : "";
-					$text .= $schedule['staff_firstName'] . " " . $schedule['staff_lastName'];
-					$text .= ")<br/>" . $schedule['s_postfixText'];
-				?>
-					<tr>
-						<td><?=$schedule['time_time'];?></td>
-						<td><?=$text;?></td>
-						<td><?=$schedule['class_class'];?></td>
-					</tr>
-				<?php
+					$text .= $schedule['course_title'] . "<br/>(" . $schedule['staff_displayName'] . ")";
+					//if s_postfixText is, then display it
+					$text .= ($schedule['s_postfixText'] !== "") ? "<br/>".$schedule['s_postfixText'] : "";
+					
+					//display row
+					echo "<tr>";
+					echo "<td>" . $schedule['time_time'] . "</td>";
+					echo "<td>" . $text . "</td>";
+					echo "<td>" . $schedule['class_class'] . "</td>";
+					echo "</tr>";
 				}
 				?>
 			</tbody>
