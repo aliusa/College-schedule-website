@@ -18,6 +18,7 @@ $times = $time->fetch_all();
 </head>
 <body>
 	<div id="wrapper">
+			<a href="#" id="AddNewSchedule">Pridėti</a>
 			<div id="addTable">
 				<table>
 					<form class="form" role="form" method="GET">
@@ -37,9 +38,9 @@ $times = $time->fetch_all();
 										}
 									?>
 								</select>
-								<input id="hiddenGroup" class="hidden" />
-								<input id="hiddenStaff" class="hidden" />
-								<input id="hiddenCourse" class="hidden" />
+								<input id="hiddenCourse" class="hidden" placeholder="course" />
+								<input id="hiddenStaff" class="hidden" placeholder="staff" />
+								<input id="hiddenGroup" class="hidden" placeholder="group" />
 							</td>
 					</form>
 				</table>

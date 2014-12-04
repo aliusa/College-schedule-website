@@ -19,6 +19,9 @@ a {
 }
 
 /*----------------login----------------------*/
+#AddNewSchedule {
+	border-bottom: 1px dotted #5d5d5d;
+}
 /*#loginForm input{
 	border: 1px solid #5C314F;
 }
@@ -42,8 +45,7 @@ a {
 input[id=staff], input[id=course] {
 	width:200px;
 }
-
-#pickTime {
+#pickTime {	/*Time select box*/
 	height:130px;
 }
 .hidden {
