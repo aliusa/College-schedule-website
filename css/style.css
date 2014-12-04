@@ -36,8 +36,10 @@ a {
 	margin-top: -1px;
 	background-color: #5C314F;
 }/**/
-
-input[id=staff] {
+#addTable table {
+	margin: 0 auto;
+}
+input[id=staff], input[id=course] {
 	width:200px;
 }
 
@@ -47,16 +49,17 @@ input[id=staff] {
 .hidden {
 	display: none;
 }
-input.date {
-	width: 150px;
-	color: #000;
+tr td input[id=group] {
+	margin-top: 30px;
 }
 /*----------------table----------------------*/
-.scheduleTable, #addTable table {
+.scheduleTable {
 	text-align: center;
+	margin: 0 auto;
 	border-collapse:collapse;
+	margin-top: 20px;
 }
-th, td {
+.scheduleTable th, .scheduleTable td {
 	border: 1px solid black;
 	padding: 5px 10px 5px 10px;
 }

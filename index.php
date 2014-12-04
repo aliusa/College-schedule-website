@@ -20,12 +20,12 @@ $times = $time->fetch_all();
 	<div id="wrapper">
 			<div id="addTable">
 				<table>
-					<form class="form-horizontal" role="form" method="GET">
+					<form class="form" role="form" method="GET">
 						<tr>
 							<td>
-								<input id="group" name="group" type="text" placeholder="grupė" autocomplete="off" /><br/>
-								<input id="course" name="course" type="text" placeholder="dalykas" autocomplete="off" /><br/>
+								<input id="course" name="course" type="text" placeholder="dalykas" autocomplete="off" />
 								<input id="staff" name="staff" type="text" placeholder="dėstytojas" autocomplete="off" /><br/>
+								<input id="group" name="group" type="text" placeholder="grupė" autocomplete="off" />
 								<input type="date" /><br/>
 								<input type="submit" name="Pateikti" /><input type="reset" value="Atšaukti" />
 							</td>
@@ -49,10 +49,10 @@ $times = $time->fetch_all();
 			<tbody>
 				<?php
 				foreach ($schedules as $schedule) {
-					//if s_prefixText is, then display it
+					//if s_prefixText exists, then display it
 					$text = ($schedule['s_prefixText'] !== "") ? "<b>".$schedule['s_prefixText']."</b><br/>" : "";
 					$text .= $schedule['course_title'] . "<br/>(" . $schedule['staff_displayName'] . ")";
-					//if s_postfixText is, then display it
+					//if s_postfixText exists, then display it
 					$text .= ($schedule['s_postfixText'] !== "") ? "<br/>".$schedule['s_postfixText'] : "";
 					
 					//display row
