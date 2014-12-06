@@ -1,3 +1,4 @@
+
 body {
 	background-color: #446280;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -52,4 +53,8 @@ input[type="submit"] {
 	color: #ddd;
 	margin-top: 20px;
 	box-shadow: 0 1px 0px #165680;
+}
+/*______ Error message ______*/
+.msg-error {
+
 }

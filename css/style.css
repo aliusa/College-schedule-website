@@ -1,21 +1,24 @@
 body {
 	background-color: #446280;
+	margin: 0 auto;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
+	width: 1000px;
+	height: 100%;
 }
 a {
 	text-decoration: none;
 }
 
 #wrapper {
-	width: 960px;
 	margin: 0 auto;
 	margin-top: 20px;
 }
-
+/*_________ Menu _________*/
 #menu {
 	height: 80px;
 	background-color: #1b2939;
 }
+/*_________ Logo div _________*/
 #logo {
 	width: 240px;
 	height: 80px;
@@ -33,40 +36,47 @@ a {
 	padding-left: 90px;
 	display: block;
 }
+/*_________ navigation bar _________*/
 #navbar {
-	padding-top: 24px;
-	padding-left: 280px;
+	padding-left: 240px;
 }
 #navbar nav a {
-	width: 32px;
+	min-width: 30px;
 	height: 32px;
 	display: inline-block;
+	background-repeat: no-repeat;
+	padding: 24px;		/*dont change*/
+	background-position: 24px 24px; /*pulled from sides*/
+	margin-left: 20px; /*gap between icons*/
+}
+#navbar nav a:active {
+	background-color: #152230;
+}
+#navbar nav a:first-child {
+	margin-left: 100px;
 }
 #navbar nav a#schedule {
 	background-image: url('../icons/schedule32.png');
+	width: 33px;
+}
+#navbar nav a#courses {
+	background-image: url('../icons/courses32.png');
+	width: 37px;
 }
 #navbar nav a#staff {
 	background-image: url('../icons/staff32.png');
-	margin-left: 20px;
+	width: 32px;
 }
-/*
-#navbar ul {
-	display: inline;
-	list-style:none;
-	padding-left: 283px;
-	margin-top: -50px;
-	/* For IE, the outcast *//*
-	zoom:1;
-	*display: inline;
-	height: 32px;
-	float:left;*//*
+#navbar nav a#groups {
+	background-image: url('../icons/groups32.png');
+	width: 35px;
 }
-#navbar ul li {
-	display: inline;
-	background: #12b812;
-	height: 32px;
+#navbar nav a#logout {
+	background-image: url('../icons/exit32.png');
+	width: 30px;
 }
 
-#navbar ul li a{
-	background-image: url('..icons/schedule.png');
-}*/
+.currentPage {
+	background-color: #15202e;
+}
+/*_________ content _________*/

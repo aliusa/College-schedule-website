@@ -23,7 +23,7 @@ define('DIR','http://localhost/vkk_schedule/');
 define('DIRADMIN','http://localhost/vkk_schedule/admin/');
 
 // define site title for top of the browser
-define('SITETITLE','Simple CMS');
+define('SITETITLE','VKK Paskaitų tvarkaraštis');
 
 //define include checker
 define('included', 1);

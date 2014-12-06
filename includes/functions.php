@@ -43,14 +43,14 @@ function login_required() {
 	if(logged_in()) {	
 		return true;
 	} else {
-		header('Location: '.DIRADMIN.'login.php');
+		header('Location: '.DIRADMIN.'login');
 		exit();
 	}	
 }
 
 function logout(){
 	unset($_SESSION['authorized']);
-	header('Location: '.DIRADMIN.'login.php');
+	header('Location: '.DIRADMIN.'login');
 	exit();
 }
 
@@ -78,5 +78,7 @@ function errors($error){
 			echo $showError;
 	}// close if empty errors
 } // close function
+
+$pages = array('index', 'schedule', 'courses', 'staff', 'groups', 'classroom');
 
 ?>

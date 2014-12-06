@@ -1,14 +1,8 @@
 <?php
-
 require('../includes/config.php'); 
 
 //make sure user is logged in, function will redirect use if not logged in
 login_required();
-
-//if logout has been clicked run the logout function which will destroy any active sessions and redirect to the login page
-if(isset($_GET['logout'])){
-	logout();
-}
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +15,7 @@ if(isset($_GET['logout'])){
 <body>
 	<div id="wrapper">
 		<?php
-			$currentPage = "";
+			$currentPage = "schedule"; /**/
 			require('navigation.php');
 		?>
 	</div>
