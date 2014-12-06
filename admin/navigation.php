@@ -15,7 +15,7 @@ if (!defined('included')){
 			<a href="<?=DIRADMIN?>courses" id="courses" title="dalykai" rel="prefetch" class="<?=($currentPage==='courses')?'currentPage':'';?>" ></a>
 			<a href="<?=DIRADMIN?>staff" id="staff" title="dėstytojai" rel="prefetch" class="<?=($currentPage==='staff')?'currentPage':'';?>" ></a>
 			<a href="<?=DIRADMIN?>groups" id="groups" title="grupės" rel="prefetch" class="<?=($currentPage==='groups')?'currentPage':'';?>" ></a>
-			<a href="<?=DIRADMIN?>charts" id="charts" title="grupės" rel="prefetch" class="<?=($currentPage==='charts')?'currentPage':'';?>" ></a>
+			<a href="<?=DIRADMIN?>charts" id="charts" title="statistika" rel="prefetch" class="<?=($currentPage==='charts')?'currentPage':'';?>" ></a>
 			<a href="<?=DIRADMIN?>?logout" id="logout" title="išeiti" ></a>
 		</nav>
 	</div>
