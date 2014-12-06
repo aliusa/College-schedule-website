@@ -1,67 +1,72 @@
-html, body {
-	margin:0px;
-	border:0px;
-    background-color: #FFFBE2;
-	font:16px Arial, sans-serif;
+body {
+	background-color: #446280;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-
 a {
 	text-decoration: none;
 }
 
-/*--------------------------------------*/
-
 #wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    /*margin-top: calc(50% - 30%);/**/
-    text-align: center;
-}
-
-/*----------------login----------------------*/
-#AddNewSchedule {
-	border-bottom: 1px dotted #5d5d5d;
-}
-/*#loginForm input{
-	border: 1px solid #5C314F;
-}
-#loginForm input[type="text"], #loginForm input[type="password"] {
-	width:200px;
-	height:10px;
-	padding:10px;
-}
-#loginForm input[type="password"] {
-	margin-top: -1px;
-}
-#loginForm input[type="submit"] {
-	width:222px;
-	height:30px;
-	margin-top: -1px;
-	background-color: #5C314F;
-}/**/
-#addTable table {
+	width: 960px;
 	margin: 0 auto;
-}
-input[id=staff], input[id=course] {
-	width:200px;
-}
-#pickTime {	/*Time select box*/
-	height:130px;
-}
-.hidden {
-	display: none;
-}
-tr td input[id=group] {
-	margin-top: 30px;
-}
-/*----------------table----------------------*/
-.scheduleTable {
-	text-align: center;
-	margin: 0 auto;
-	border-collapse:collapse;
 	margin-top: 20px;
 }
-.scheduleTable th, .scheduleTable td {
-	border: 1px solid black;
-	padding: 5px 10px 5px 10px;
+
+#menu {
+	height: 80px;
+	background-color: #1b2939;
 }
+#logo {
+	width: 240px;
+	height: 80px;
+	background-color: #0d151e;
+	background-image: url('../icons/schedule64.png');
+	background-size: 50px 50px;
+	background-repeat: no-repeat;
+	background-position: 20px 15px;
+	float: left;
+}
+#logo span {
+	color: #bdc3c7;
+	font-weight: bold;
+	padding-top: 12px;
+	padding-left: 90px;
+	display: block;
+}
+#navbar {
+	padding-top: 24px;
+	padding-left: 280px;
+}
+#navbar nav a {
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+}
+#navbar nav a#schedule {
+	background-image: url('../icons/schedule.png');
+}
+#navbar nav a#staff {
+	background-image: url('../icons/staff32.png');
+	margin-left: 20px;
+}
+/*
+#navbar ul {
+	display: inline;
+	list-style:none;
+	padding-left: 283px;
+	margin-top: -50px;
+	/* For IE, the outcast *//*
+	zoom:1;
+	*display: inline;
+	height: 32px;
+	float:left;*//*
+}
+#navbar ul li {
+	display: inline;
+	background: #12b812;
+	height: 32px;
+}
+
+#navbar ul li a{
+	background-image: url('..icons/schedule.png');
+}*/

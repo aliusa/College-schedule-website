@@ -20,7 +20,18 @@ if(isset($_GET['logout'])){
 </head>
 <body>
 	<div id="wrapper">
-		a
+		<div id="menu">
+			<div id="logo">
+				<a href=""><span>Vilniaus<br/>Kooperacijos<br/>Kolegija</span></a>
+			</div>
+			
+			<div id="navbar">
+				<nav>
+					<a href="<?=DIRADMIN?>schedule.php" id="schedule"></a>
+					<a href="<?=DIRADMIN?>staff.php" id="staff"></a>
+				</nav>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
