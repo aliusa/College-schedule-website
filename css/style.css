@@ -20,8 +20,8 @@ a {
 	width: 240px;
 	height: 80px;
 	background-color: #0d151e;
-	background-image: url('../icons/schedule64.png');
-	background-size: 50px 50px;
+	background-image: url('../icons/schedule50.png');
+	background-size: 52px 50px;
 	background-repeat: no-repeat;
 	background-position: 20px 15px;
 	float: left;
@@ -43,7 +43,7 @@ a {
 	display: inline-block;
 }
 #navbar nav a#schedule {
-	background-image: url('../icons/schedule.png');
+	background-image: url('../icons/schedule32.png');
 }
 #navbar nav a#staff {
 	background-image: url('../icons/staff32.png');
