@@ -1,4 +1,3 @@
-
 body {
 	background-color: #446280;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -11,12 +10,18 @@ body {
 	margin-top: 160px;
 	box-shadow: 3px 3px 5px #143250;
 }
+/*______ header ______*/
 #loginHeader {
 	height: 30px;
 	background-color: #6e8595;
 	text-align: center;
 	padding-top: 0px;
 }
+.msg-error {
+
+}
+
+/*______ content ______*/
 #content {
 	height: 200px;
 	background-color: #bdc3c7;
@@ -25,7 +30,7 @@ body {
 	padding-top: 20px;
 	text-align: center;
 }
-input[type=text] {
+input[class="LoginPass"] {
 	width: 350px;
 	height: 40px;
 	border: 0px;
@@ -34,11 +39,11 @@ input[type=text] {
 	font-size: 1em;
 	background-color: #eee!important;
 }
-input[name=username] {
+input[name="username"] {
 	background: url('../icons/user20.png') no-repeat scroll 320px 10px;
 	background-size: 20px 20px;
 }
-input[name=password] {
+input[name="password"] {
 	margin-top: 20px;
 	background: url('../icons/key20.png') no-repeat scroll 320px 10px;
 	background-size: 20px 20px;
@@ -53,8 +58,4 @@ input[type="submit"] {
 	color: #ddd;
 	margin-top: 20px;
 	box-shadow: 0 1px 0px #165680;
-}
-/*______ Error message ______*/
-.msg-error {
-
 }
