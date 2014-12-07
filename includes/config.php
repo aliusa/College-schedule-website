@@ -29,4 +29,12 @@ define('SITETITLE','VKK Paskaitų tvarkaraštis');
 define('included', 1);
 
 include('functions.php');
+
+//connect to Database with PDO
+try {
+	$pdo = new PDO('mysql:host=localhost;dbname=vkk_schedule;charset=utf8', 'root', '');
+} catch (PDOExeption $e) {
+	exit('Database error.');
+}
+
 ?>

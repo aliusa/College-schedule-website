@@ -1,7 +1,7 @@
 body {
 	background-color: #446280;
 	margin: 0 auto;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
 	width: 1000px;
 	height: 100%;
 }
@@ -85,3 +85,31 @@ a {
 	background-color: #15202e;
 }
 /*_________ content _________*/
+
+/*_________ staff _________*/
+#myTable {
+	text-align: center;
+	border-collapse: collapse;
+	margin-top: 20px;
+	background-color: #99A6BF;
+	vertical-align: center;
+}
+#myTable th, #myTable td {
+	border: 1px solid #446280;
+	min-width: 20px;
+}
+#myTable th {
+	padding: 10px;
+	font-weight: normal;
+}
+#myTable td {
+	padding: 5px;
+}
+#myTable thead {
+	background-color: #15202e;
+	color: #fff;
+}
+/*color every 2nd line*/
+#myTable tbody tr:nth-child(even) {
+	background-color: #79869F;
+}

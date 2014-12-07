@@ -79,6 +79,18 @@ function errors($error){
 	}// close if empty errors
 } // close function
 
-$pages = array('index', 'schedule', 'courses', 'staff', 'groups', 'classroom');
+
+/***********************************************/
+class Staff{
+	public function fetch_all() {
+		global $pdo;
+		$query = $pdo->prepare("
+			SELECT * FROM staff ORDER BY staff_lastName");
+		$query->execute();
+		return $query->fetchall();
+	}
+}
+
+
 
 ?>

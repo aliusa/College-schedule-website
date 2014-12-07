@@ -24,6 +24,7 @@ if(isset($_GET['logout'])){
 			$currentPage = "";
 			require('navigation.php');
 		?>
+		ab
 	</div>
 </body>
 </html>
