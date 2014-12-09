@@ -1,5 +1,5 @@
 <?php
-
+//echo $_SERVER['PHP_SELF'];
 ob_start();
 session_start();
 
@@ -17,10 +17,10 @@ if(!$conn){
 }
 
 // define site path
-define('DIR','http://localhost/vkk_schedule/');
+define('DIR', 'http://'.$_SERVER['SERVER_NAME'].'/');
 
 // define admin site path
-define('DIRADMIN','http://localhost/vkk_schedule/admin/');
+define('DIRADMIN', DIR.'admin/');
 
 // define site title for top of the browser
 define('SITETITLE','VKK Paskaitų tvarkaraštis');

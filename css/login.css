@@ -40,12 +40,12 @@ input[class="LoginPass"] {
 	background-color: #eee!important;
 }
 input[name="username"] {
-	background: url('../icons/user20.png') no-repeat scroll 320px 10px;
+	background: url('../icon/user20.png') no-repeat scroll 320px 10px;
 	background-size: 20px 20px;
 }
 input[name="password"] {
 	margin-top: 20px;
-	background: url('../icons/key20.png') no-repeat scroll 320px 10px;
+	background: url('../icon/key20.png') no-repeat scroll 320px 10px;
 	background-size: 20px 20px;
 }
 
