@@ -23,7 +23,7 @@ a {
 	width: 240px;
 	height: 80px;
 	background-color: #0d151e;
-	background-image: url('../icons/schedule50.png');
+	background-image: url('../icon/schedule50.png');
 	background-size: 52px 50px;
 	background-repeat: no-repeat;
 	background-position: 20px 15px;
@@ -57,27 +57,27 @@ a {
 	margin-left: 100px;
 }
 #navbar nav a#schedule {
-	background-image: url('../icons/schedule32.png');
+	background-image: url('../icon/schedule32.png');
 	width: 33px;
 }
 #navbar nav a#courses {
-	background-image: url('../icons/courses32.png');
+	background-image: url('../icon/courses32.png');
 	width: 37px;
 }
 #navbar nav a#staff {
-	background-image: url('../icons/staff32.png');
+	background-image: url('../icon/staff32.png');
 	width: 32px;
 }
 #navbar nav a#groups {
-	background-image: url('../icons/groups32.png');
+	background-image: url('../icon/groups32.png');
 	width: 35px;
 }
 #navbar nav a#charts {
-	background-image: url('../icons/charts32.png');
+	background-image: url('../icon/charts32.png');
 	width: 35px;
 }
 #navbar nav a#logout {
-	background-image: url('../icons/exit32.png');
+	background-image: url('../icon/exit32.png');
 	width: 30px;
 }
 
