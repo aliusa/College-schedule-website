@@ -10,3 +10,6 @@ For table sorting - tablesorter 2.0.5 - [christianbach/tablesorter](https://gith
 For SEO - [URL Rewriting for Beginners](https://www.addedbytes.com/articles/for-beginners/url-rewriting-for-beginners/)
 
 For live search [behstant.com/blog/?p=754](http://behstant.com/blog/?p=754)
+
+# Currently working on:
+``admin/``, don't mind main page.
