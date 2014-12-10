@@ -1,9 +1,9 @@
 <?php
 if (!defined('included')){
-	//die('You cannot access this file directly!');
 	require('../includes/config.php');
 	header('Location: '.DIRADMIN);
-}?>
+}
+?>
 <div id="menu">
 	<div id="logo">
 		<a href="<?=DIRADMIN?>"><span>Vilniaus<br/>Kooperacijos<br/>Kolegija</span></a>

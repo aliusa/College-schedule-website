@@ -1,5 +1,5 @@
 <?php
-require('../includes/config.php'); 
+require('../includes/config.php');
 
 include_once ('../includes/functions.php');
 $staff = New Staff;

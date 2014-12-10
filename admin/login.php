@@ -1,6 +1,5 @@
 <?php
-
-require('../includes/config.php'); 
+require('../includes/config.php');
 if(logged_in()) {header('Location: '.DIRADMIN);}
 ?>
 <!DOCTYPE>

@@ -1,5 +1,4 @@
 <?php
-//echo $_SERVER['PHP_SELF'];
 ob_start();
 session_start();
 
@@ -16,11 +15,13 @@ if(!$conn){
 	die( "Sorry! There seems to be a problem connecting to our database.");
 }
 
+$dir = 'http://'.$_SERVER['SERVER_NAME'].''.substr($_SERVER['PHP_SELF'], 0, -10);
+
 // define site path
-define('DIR', 'http://'.$_SERVER['SERVER_NAME'].'/');
+define('DIR', $dir);
 
 // define admin site path
-define('DIRADMIN', DIR.'admin/');
+define('DIRADMIN', $dir.'/');
 
 // define site title for top of the browser
 define('SITETITLE','VKK Paskaitų tvarkaraštis');

@@ -1,5 +1,5 @@
 <?php
-require('../includes/config.php'); 
+require('../includes/config.php');
 
 //make sure user is logged in, function will redirect use if not logged in
 login_required();
