@@ -7,7 +7,7 @@ if(logged_in()) {header('Location: '.DIRADMIN);}
 <head>
 <meta http-equiv="Content-Type" charset="UTF-8" />
 <title><?php echo SITETITLE;?></title>
-<link rel="stylesheet" href="<?php echo DIR;?>css/login.css" type="text/css" />
+<link rel="stylesheet" href="../css/login.css" type="text/css" />
 </head>
 <body>
 <?php 
