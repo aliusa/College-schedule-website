@@ -17,6 +17,7 @@ $times = $time->fetch_all();
     <script src="js/jquery-ui-1.8.19.dialog.min.js"></script>
 </head>
 <body>
+<!--
 	<div id="wrapper">
 			<a href="#" id="AddNewSchedule">Pridėti</a>
 			<div id="addTable">
@@ -70,5 +71,6 @@ $times = $time->fetch_all();
 	<script src="js/jquery-2.1.1.min.js"></script>
 	<script src="js/javascript.js"></script>
     <script src="js/jquery-ui-1.10.4.custom.autocomplete.min.js"></script>
+-->
 </body>
 </html>

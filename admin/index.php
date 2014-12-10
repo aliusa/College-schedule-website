@@ -1,5 +1,5 @@
 <?php
-require('../includes/config.php'); 
+require_once('../includes/config.php'); 
 
 //make sure user is logged in, function will redirect use if not logged in
 login_required();
@@ -20,7 +20,7 @@ if(isset($_GET['logout'])){
 	<div id="wrapper">
 		<?php
 			$currentPage = "";
-			require('navigation.php');
+			include_once('navigation.php');
 		?>
 		ab
 	</div>
