@@ -21,7 +21,7 @@ login_required();
 <body>
 	<div id="wrapper">
 		<?php
-			$currentPage = "staff"; /**/
+			$currentPage = "staff";
 			require('navigation.php');
 		?>
 		<table id="myTable" align="center" class="sortable tablesorter">
