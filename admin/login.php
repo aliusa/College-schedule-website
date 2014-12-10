@@ -20,8 +20,8 @@ if(logged_in()) {header('Location: '.DIRADMIN);}
 		<div id="content">
 			<div id="login">
 				<form method="post" action="">
-					<input type="text" name="username" class="LoginPass" placeholder="slapyvardis" /><br/>
-					<input type="password" name="password" class="LoginPass" placeholder="slaptažodis" /><br/>
+					<input type="text" name="username" class="LoginPass" placeholder="slapyvardis" required autofocus /><br/>
+					<input type="password" name="password" class="LoginPass" placeholder="slaptažodis" autocomplete="off" required /><br/>
 					<input type="submit" name="submit" class="button" value="Prisijungti" />
 				</form>
 			</div>
