@@ -1,4 +1,8 @@
 <?php
+if (!defined('included')){
+	die('You cannot access this file directly!');
+}
+
 ob_start();
 session_start();
 
