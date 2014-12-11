@@ -6,6 +6,9 @@ if(logged_in()) {header('Location: '.DIRADMIN);}
 <html>
 <head>
 <meta http-equiv="Content-Type" charset="UTF-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noindex, nofollow" />
 <title><?php echo SITETITLE;?></title>
 <link rel="stylesheet" href="../css/login.css" type="text/css" />
 </head>
