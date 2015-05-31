@@ -22,7 +22,6 @@ class FactionType extends AbstractType
             ->add('factionname')
             ->add('form')
             ->add('course')
-            ->add('other')
         ;
     }
     

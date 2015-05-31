@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Schedule
  *
- * @ORM\Table(name="schedule", indexes={@ORM\Index(name="fk_schedule_lecturer1_idx", columns={"lecturer_id"}), @ORM\Index(name="fk_schedule_course1_idx", columns={"course_id"}), @ORM\Index(name="fk_schedule_faction1_idx", columns={"faction_id"}), @ORM\Index(name="fk_schedule_other1_idx", columns={"other_id"}), @ORM\Index(name="fk_schedule_classroom1_idx", columns={"classroom_id"})})
+ * @ORM\Table(name="schedule", indexes={@ORM\Index(name="fk_schedule_lecturer1_idx", columns={"lecturer_id"}), @ORM\Index(name="fk_schedule_course1_idx", columns={"course_id"}), @ORM\Index(name="fk_schedule_faction1_idx", columns={"faction_id"}), @ORM\Index(name="fk_schedule_classroom1_idx", columns={"classroom_id"})})
  * @ORM\Entity
  */
 class Schedule
@@ -81,17 +81,6 @@ class Schedule
      * })
      */
     private $lecturer;
-
-    /**
-     * @var \Other
-     *
-     * @ORM\ManyToOne(targetEntity="Other")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="other_id", referencedColumnName="id")
-     * })
-     */
-    private $other;
-
 
 
     /**
@@ -265,26 +254,4 @@ class Schedule
         return $this->lecturer;
     }
 
-    /**
-     * Set other
-     *
-     * @param \Schedule\CMSBundle\Entity\Other $other
-     * @return Schedule
-     */
-    public function setOther(\Schedule\CMSBundle\Entity\Other $other = null)
-    {
-        $this->other = $other;
-
-        return $this;
-    }
-
-    /**
-     * Get other
-     *
-     * @return \Schedule\CMSBundle\Entity\Other 
-     */
-    public function getOther()
-    {
-        return $this->other;
-    }
 }

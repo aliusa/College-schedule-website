@@ -20,7 +20,6 @@ class ScheduleType extends AbstractType
             ->add('course')
             ->add('faction')
             ->add('lecturer')
-            ->add('other')
             ->add('timeend')
             ->add('timestart')
         ;
