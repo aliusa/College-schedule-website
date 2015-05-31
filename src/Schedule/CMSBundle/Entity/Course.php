@@ -60,6 +60,7 @@ class Course
     }
 
 
+
     /**
      * Get id
      *
@@ -158,6 +159,8 @@ class Course
     {
         return $this->lecturer;
     }
+
+
 
     public function __toString()
     {

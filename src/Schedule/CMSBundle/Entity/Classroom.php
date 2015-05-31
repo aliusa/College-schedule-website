@@ -29,11 +29,14 @@ class Classroom
     private $name;
 
     /**
-     * @var integer
+     * @var \Departament
      *
-     * @ORM\Column(name="departament_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Departament")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="departament_id", referencedColumnName="id")
+     * })
      */
-    private $departamentId;
+    private $departament;
 
 
 
@@ -71,27 +74,29 @@ class Classroom
     }
 
     /**
-     * Set departamentId
+     * Set departament
      *
-     * @param integer $departamentId
+     * @param \Schedule\CMSBundle\Entity\Departament $departament
      * @return Classroom
      */
-    public function setDepartamentId($departamentId)
+    public function setDepartament(\Schedule\CMSBundle\Entity\Departament $departament = null)
     {
-        $this->departamentId = $departamentId;
+        $this->departament = $departament;
 
         return $this;
     }
 
     /**
-     * Get departamentId
+     * Get departament
      *
-     * @return integer 
+     * @return \Schedule\CMSBundle\Entity\Departament 
      */
-    public function getDepartamentId()
+    public function getDepartament()
     {
-        return $this->departamentId;
+        return $this->departament;
     }
+
+
 
     public function __toString()
     {

@@ -74,7 +74,6 @@ class Lecturer
      */
     private $course;
 
-
     /**
      * Constructor
      */
@@ -82,6 +81,7 @@ class Lecturer
     {
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
 
     /**
@@ -241,6 +241,8 @@ class Lecturer
     {
         return $this->course;
     }
+
+
 
     public function __toString()
     {

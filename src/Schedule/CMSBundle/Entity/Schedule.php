@@ -253,5 +253,4 @@ class Schedule
     {
         return $this->lecturer;
     }
-
 }

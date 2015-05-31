@@ -79,7 +79,6 @@ class Faction
      */
     private $course;
 
-
     /**
      * Constructor
      */
@@ -87,6 +86,7 @@ class Faction
     {
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
 
     /**
@@ -268,11 +268,5 @@ class Faction
     public function getCourse()
     {
         return $this->course;
-    }
-
-
-    public function __toString()
-    {
-        return $this->name;
     }
 }
