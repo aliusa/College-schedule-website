@@ -1,0 +1,54 @@
+{% extends 'ScheduleCMSBundle:Default:index.html.twig' %}
+{% block bodyId %}schedule{% endblock %}
+
+{% block body -%}
+    <h1>Schedule list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lecturer</th>
+                <th>Course</th>
+                <th>Group</th>
+                <th>Classroom</th>
+                <th>Date</th>
+                <th>Timestart</th>
+                <th>Timeend</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('schedule_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.lecturer }}</td>
+                <td>{{ entity.course }}</td>
+                <td>{{ entity.group }}</td>
+                <td>{{ entity.classroom }}</td>
+                <td>{% if entity.date %}{{ entity.data|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.timeStart }}</td>
+                <td>{{ entity.timeEnd }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('schedule_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('schedule_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('schedule_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

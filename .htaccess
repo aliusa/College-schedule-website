@@ -1,7 +1,0 @@
-RewriteEngine On		# Turn on the rewriting engine
-RewriteRule    ^admin/schedule/?$	admin/schedule.php		[NC,L]
-RewriteRule    ^admin/courses/?$	admin/courses.php		[NC,L]
-RewriteRule    ^admin/staff/?$		admin/staff.php			[NC,L]
-RewriteRule    ^admin/groups/?$		admin/groups.php		[NC,L]
-RewriteRule    ^admin/charts/?$		admin/charts.php		[NC,L]
-RewriteRule    ^admin/login/?$		admin/login.php			[NC,L]

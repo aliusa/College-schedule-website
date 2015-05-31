@@ -1,0 +1,101 @@
+<?php
+
+namespace Schedule\CMSBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Lecturer
+ *
+ * @ORM\Table(name="lecturer", indexes={@ORM\Index(name="fk_lecturer_prefix1_idx", columns={"prefix_id"})})
+ * @ORM\Entity
+ */
+class Lecturer
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstName", type="string", length=45, nullable=false)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastName", type="string", length=45, nullable=false)
+     */
+    private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", nullable=true)
+     */
+    private $text;
+
+    /**
+     * @var \Prefix
+     *
+     * @ORM\ManyToOne(targetEntity="Prefix")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="prefix_id", referencedColumnName="id")
+     * })
+     */
+    private $prefix;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Course", inversedBy="lecturer")
+     * @ORM\JoinTable(name="lecturer_has_course",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="lecturer_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="course_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $course;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Other", inversedBy="lecturer")
+     * @ORM\JoinTable(name="lecturer_has_other",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="lecturer_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="other_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $other;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->course = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->other = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

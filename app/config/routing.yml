@@ -1,0 +1,7 @@
+schedule_cms:
+    resource: "@ScheduleCMSBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
