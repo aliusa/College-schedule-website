@@ -269,4 +269,10 @@ class Faction
     {
         return $this->course;
     }
+
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
