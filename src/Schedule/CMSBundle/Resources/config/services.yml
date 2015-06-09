@@ -1,4 +1,0 @@
-services:
-#    schedule_cms.example:
-#        class: Schedule\CMSBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]

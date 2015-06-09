@@ -1,8 +1,0 @@
-ScheduleCMSBundle:
-    resource: "@ScheduleCMSBundle/Controller"
-    type: annotation
-    prefix:   /
-
-schedule_cms_homepage:
-    path:     /
-    defaults: { _controller: ScheduleCMSBundle:Default:index }
