@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "index";

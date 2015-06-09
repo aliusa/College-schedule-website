@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "destytojas";
@@ -40,11 +40,11 @@
 	<div class="well well-lg">
 		<form method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
 			<input type="text" name="id" hidden value="<?=$row['id']?>">
-			<div class="form-group col-xs-6">
+			<div class="form-group col-*-12">
 				<label for="vardasinputas">Vardas</label>
 				<input type="text" class="form-control" id="vardasinputas" name="vardas" placeholder="Įveskite vardą" required value="<?=$row['vardas']?>">
 			</div>
-			<div class="form-group col-xs-6">
+			<div class="form-group col-*-12">
 				<label for="pavardeinputas">Pavardė</label>
 				<input type="text" class="form-control" id="pavardeinputas" name="pavarde" placeholder="Įveskite pavardę" required value="<?=$row['pavarde']?>" >
 			</div>

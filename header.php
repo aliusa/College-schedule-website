@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	function displayHeader($id ="" , $params = null) {
 ?>
 <!DOCTYPE html>
@@ -151,5 +151,5 @@ function deleteItem($table, $id)
 	global $pdo;
 	$sql = "DELETE FROM $table WHERE id = $id";
 	$stmt = $pdo->prepare($sql);
-	$delete = $stmt->execute();
+	$stmt->execute();
 }

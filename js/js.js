@@ -5,4 +5,10 @@
             filterBehavior: 'text',
             enableCaseInsensitiveFiltering: true
         });
+        $('#example-getting-started2').multiselect({
+        	maxHeight: 250,
+        	enableFiltering: true,
+            filterBehavior: 'text',
+            enableCaseInsensitiveFiltering: true
+        });
     });

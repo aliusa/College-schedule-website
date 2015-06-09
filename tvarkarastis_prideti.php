@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "tvarkarastis";
@@ -88,7 +88,7 @@
 			</div>
 
 			<div class="form-group col-xs-4 col-sm-4" >
-				<label for="pasirenkamasisinputas">Pasirenkamasis</label>
+				<label for="pasirenkamasisinputas"><span class="hidden-xs">Pasirenkamasis</span><span class="visible-xs">Pasirenk.</span></label>
 <?php $value = (isset($_GET['pasi'])) ? $_GET['pasi'] : 0 ; ?>
 				<input type="number" class="form-control" id="pasirenkamasisinputas" name="pasirenkamasis" required min="0", max="2" value="<?=$value?>">
 			</div>
@@ -119,20 +119,20 @@
 				</select>
 			</div>
 
-			<div class="form-group col-xs-6" >
-				<label for="auditorijainputas">Auditorija</label>
-				<select class="form-control" name="auditorija_id" id="auditorijainputas">
+			<div class="form-group col-xs-6 col-sm-4" >
+				<label for="example-getting-started2">Auditorija</label>
+<br>
+				<select id="example-getting-started2" name="auditorija_id">
 <?php
-					echo "<option value='' selected>&#60;&#60;&#60;Auditorija&#62;&#62;&#62;</option>";
 					foreach ($rowsAuditorija as $key => $value) {
-						$selected = (@$_GET['aud'] === $value['aid']) ? "selected" : null ;
+						$selected = (@$_GET['aud'] === $value['id']) ? "selected" : null ;
 						echo "<option value=".$value['aid']." $selected>".$value['apav']." (".$value['spav'].")</option>";
 					};
 ?>
 				</select>
 			</div>
 
-			<div class="form-group col-xs-6" >
+			<div class="form-group col-xs-6 col-sm-8" >
 				<label for="paskaitostipoinputas">Tipas</label>
 				<select class="form-control" name="paskaitos_tipas_id" id="paskaitostipoinputas">
 <?php

@@ -8,8 +8,8 @@
 	if (@$_GET['id']) {
 		$id = $_GET['id'];
 		$row = selectComplex("
-				SELECT *
-				FROM destytojas
+				SELECT a.id, CONCAT(a.vardas, ' ', a.pavarde) AS destytojas, a.elpastas
+				FROM destytojas AS a
 				WHERE id = '".$id."'
 				LIMIT 1");
 ?>
@@ -17,11 +17,9 @@
 		<table>
 <?php
 			$arr = headings("destytojas");
-			$i=0;
-			foreach ($row[0] as $key => $value) {
-				echo "<tr><td><b>".$arr[$i]."</b></td><td>$value</td></tr>";
-				$i++;
-			}
+			echo "<tr><td><b>".$arr[0]."</b></td><td>".$row[0]['id']."</td></tr>"; //id
+			echo "<tr><td><b>".$arr[1].' '.$arr[2]."</b></td><td>".$row[0]['destytojas']."</td></tr>"; //vardas pavardė
+			echo "<tr><td><b>".$arr[3]."</b></td><td>".$row[0]['elpastas']."</td></tr>"; //elpaštas
 ?>
 		</table>
 		<a class="btn btn-primary" href="destytojas_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
@@ -36,7 +34,7 @@
 
 
 <?php
-// Visi vienos grupės tvarkaraščio įrašai.
+// Visi vieno dėstytojo tvarkaraščio įrašai.
 		try {
 			// Visi vienos grupės įrašai su data didesne už šiandien.
 			$rows = selectComplex("
@@ -91,10 +89,10 @@
 			echo "<td>".date('m/d', strtotime($value['tvdiena']))."</td>";
 			$prad = date('H:i', strtotime($value['prlaikas']));
 			$pab = date('H:i', strtotime($value['palaikas']));
-			echo "<td><span class='hidden-xs'>$prad - $pab</span><span class='visible-xs'>$prad\n$pab<span></td>";
+			echo "<td><span class='hidden-xs'>$prad - $pab</span><span class='visible-xs'>$prad - $pab<span></td>";
 			//echo "<td>".date('H:i', strtotime($value['palaikas']))."</td>";
-			$pogrupis = ($value['pogrupis'] === "0") ? null : " (".$value['pogrupis']." pogrupis)" ;
-			$pasirenkamasis = ($value['pasirenkamasis'] === "0" ) ? null : " (pasirenkamasis)";
+			$pogrupis = ($value['pogrupis'] === "0") ? null : " <span class='visible-xs'>\n</span>(".$value['pogrupis']." pogr.)" ;
+			$pasirenkamasis = ($value['pasirenkamasis'] === "0" ) ? null : " <span class='visible-xs'>\n</span>(pasirenk.)";
 			echo "<td><a href='grupe.php?id=".$value['grid']."'>".$value['grpavadinimas']."</a>$pogrupis$pasirenkamasis</td>";
 			$paskaitosTipas = (strtolower($value['paspavadinimas']) === "paskaita") ? null : "<span class='visible-xs'> (".$value['paspavadinimas'].")</span>" ;
 			echo "<td>".$value['dapavadinimas']."$paskaitosTipas</td>"; // dalykas
@@ -115,7 +113,7 @@
 
 
 
-// Visų grupių įrašai.
+// Visų dėstytojų įrašai.
 	} elseif (selectBasicLimit("destytojas") === 0) {
 			echo "nėra įrašų";
 	} else {

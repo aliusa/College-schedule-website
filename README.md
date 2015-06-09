@@ -1,4 +1,4 @@
-Tvarkaraščio web aplikacija
+﻿Tvarkaraščio web aplikacija
 ========================
 
 Naudojama [Bootstrap](getbootstrap.com "Bootstrap") front-end karkasas  

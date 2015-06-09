@@ -1,12 +1,12 @@
-<?php
+﻿<?php
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "grupe";
 	displayHeader($currentPage, ["grupe_prideti.php"]);
 
 	if (@$_GET['deleteItem']) {
-		deleteItem($_GET['table'], $_GET['id']);
-		header("Location: grupe.php");
+		deleteItem($_GET['table'], intval($_GET['id']));
+		//header("Location: grupe.php");
 	}
 
 	if ($_POST) {
