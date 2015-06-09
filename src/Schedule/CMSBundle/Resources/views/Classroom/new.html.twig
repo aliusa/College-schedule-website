@@ -1,0 +1,16 @@
+{% extends 'ScheduleCMSBundle:default:index.html.twig' %}
+{% block bodyId %}classroom{% endblock %}
+
+{% block body -%}
+    <h1>Classroom creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('classroom') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
