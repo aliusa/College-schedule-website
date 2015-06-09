@@ -16,7 +16,7 @@ class ClassroomType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('departamentId')
+            ->add('departament')
         ;
     }
     

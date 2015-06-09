@@ -21,7 +21,6 @@ class LecturerType extends AbstractType
             ->add('text')
             ->add('prefix')
             ->add('course')
-            ->add('other')
         ;
     }
     

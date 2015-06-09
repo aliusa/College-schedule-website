@@ -80,28 +80,13 @@ class Faction
     private $course;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Other", inversedBy="faction")
-     * @ORM\JoinTable(name="faction_has_other",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="faction_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="other_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $other;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->other = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
 
     /**
@@ -285,38 +270,6 @@ class Faction
         return $this->course;
     }
 
-    /**
-     * Add other
-     *
-     * @param \Schedule\CMSBundle\Entity\Other $other
-     * @return Faction
-     */
-    public function addOther(\Schedule\CMSBundle\Entity\Other $other)
-    {
-        $this->other[] = $other;
-
-        return $this;
-    }
-
-    /**
-     * Remove other
-     *
-     * @param \Schedule\CMSBundle\Entity\Other $other
-     */
-    public function removeOther(\Schedule\CMSBundle\Entity\Other $other)
-    {
-        $this->other->removeElement($other);
-    }
-
-    /**
-     * Get other
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getOther()
-    {
-        return $this->other;
-    }
 
     public function __toString()
     {

@@ -1,4 +1,5 @@
-{% extends '::base.html.twig' %}
+{% extends 'ScheduleCMSBundle:default:index.html.twig' %}
+{% block bodyId %}classroom{% endblock %}
 
 {% block body -%}
     <h1>Classroom</h1>
@@ -12,10 +13,6 @@
             <tr>
                 <th>Name</th>
                 <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Departamentid</th>
-                <td>{{ entity.departamentId }}</td>
             </tr>
         </tbody>
     </table>
