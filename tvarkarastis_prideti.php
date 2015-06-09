@@ -120,12 +120,11 @@
 			</div>
 
 			<div class="form-group col-xs-6 col-sm-4" >
-				<label for="example-getting-started2">Auditorija</label>
-<br>
+				<label for="example-getting-started2">Auditorija</label><br>
 				<select id="example-getting-started2" name="auditorija_id">
 <?php
 					foreach ($rowsAuditorija as $key => $value) {
-						$selected = (@$_GET['aud'] === $value['id']) ? "selected" : null ;
+						$selected = (@$_GET['aud'] === $value['aid']) ? "selected" : null ;
 						echo "<option value=".$value['aid']." $selected>".$value['apav']." (".$value['spav'].")</option>";
 					};
 ?>

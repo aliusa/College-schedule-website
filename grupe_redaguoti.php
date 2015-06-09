@@ -2,11 +2,18 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "grupe";
-	displayHeader($currentPage, ["grupe_prideti.php"]);
+	displayHeader($currentPage, ["Pridėti grupę"=>"grupe_prideti.php"]);
 
-	if (@$_GET['deleteItem']) {
-		deleteItem($_GET['table'], intval($_GET['id']));
-		//header("Location: grupe.php");
+	if (isset($_GET['deleteItem'])) {
+		// Ieško ar grupė turi tvarkaraščio įrašų.
+		$s = selectComplex("SELECT COUNT(grupe_id) as g FROM tvarkarastis WHERE grupe_id = ".intval($_GET['id'])." LIMIT 1");
+		// Jei yra įrašas grupės netrina.
+		if ( $s[0]['g'] === 1) {
+			die("Negalima ištrinti grupės. Grupė turi tvarkaraščio įrašų.");
+		} else {
+			deleteItem("grupe", $_GET['id']);
+			header("Location: grupe.php");
+		}
 	}
 
 	if ($_POST) {
@@ -113,7 +120,7 @@
 
 			<button type="submit" class="btn btn-success">Atnaujinti</button>
 			<button type="reset" class="btn btn-warning">Atstatyti</button>
-			<button type="button" class="btn btn-danger" onclick="location.href='grupe_redaguoti.php?deleteItem=true&table=grupe&id=<?=$id?>'">Ištrinti</button>
+			<button type="button" class="btn btn-danger" onclick="location.href='grupe_redaguoti.php?deleteItem=true&id=<?=$id?>'">Ištrinti</button>
 			<button type="button" class="btn btn-primary" onclick="location.href='grupe_redaguoti.php?id=<?=$id?>'">Atgal</button>
 		</form>
 	</div>

@@ -4,9 +4,10 @@
 	$currentPage = "tvarkarastis";
 	displayHeader($currentPage, ["Pridėti įrašą"=>"tvarkarastis_prideti.php"]);
 
-	if (@$_GET['deleteItem']) {
-		deleteItem($_GET['table'], $_GET['id']);
-		header("Location: tvarkarastis");
+	// Žiūrim ar URL nuorodoje yra deleteItem kintamasis
+	if (isset($_GET['deleteItem'])) {
+		deleteItem("tvarkarastis", intval($_GET['id']));
+		header("Location: tvarkarastis.php");
 	}
 
 	if ($_POST) {
@@ -88,7 +89,7 @@
 	$rowsGrupe = selectComplex("SELECT * FROM grupe ORDER BY pavadinimas ASC");
 	$rowsDalykas = selectComplex("SELECT * FROM dalykas ORDER BY pavadinimas ASC");
 	$rowsDestytojas = selectComplex("SELECT * FROM destytojas ORDER BY pavarde ASC, vardas ASC");
-	$rowsAuditorija = selectBasic("auditorija");
+	$rowsAuditorija = selectComplex("SELECT a.id aid, a.pavadinimas apav, a.skyrius_id, s.pavadinimas spav FROM auditorija AS a LEFT JOIN skyrius AS s ON a.skyrius_id = s.id ORDER BY a.skyrius_id ASC, a.pavadinimas ASC");
 	$rowsPaskaitosTipas = selectBasic("paskaitos_tipas");
 
 	$date = date('Y-m-d', strtotime($row['diena']));
@@ -173,19 +174,20 @@
 				</select>
 			</div>
 
-			<div class="form-group col-xs-6" >
-				<label for="auditorijainputas">Auditorija</label>
-				<select class="form-control" name="auditorija_id" id="auditorijainputas">
+			<div class="form-group col-xs-6 col-sm-4" >
+				<label for="example-getting-started2">Auditorija</label><br>
+				<select id="example-getting-started2" name="auditorija_id">
 <?php
 					foreach ($rowsAuditorija as $key => $value) {
-						$selected = ($row['auditorija_id'] === $value['id']) ? "selected" : null ;
-						echo "<option value=".$value['id']." ".$selected.">".$value['pavadinimas']."</option>";
+						$selected = ($row['auditorija_id'] === $value['aid']) ? "selected" : null ;
+						echo "<option value=".$value['aid']." $selected>".$value['apav']." (".$value['spav'].")</option>";
+						//echo "<option value=".$value['aid']." $selected>".$value['apav']." (".$value['spav'].")</option>";
 					};
 ?>
 				</select>
 			</div>
 
-			<div class="form-group col-xs-6" >
+			<div class="form-group col-xs-6 col-sm-8" >
 				<label for="paskaitostipoinputas">Tipas</label>
 				<select class="form-control" name="paskaitos_tipas_id" id="paskaitostipoinputas">
 <?php
@@ -199,7 +201,7 @@
 
 			<button type="submit" class="btn btn-success">Atnaujinti</button>
 			<button type="reset" class="btn btn-warning">Atstatyti</button>
-			<button type="button" class="btn btn-danger" onclick="location.href='tvarkarastis_redaguoti.php?deleteItem=true&amp;table=tvarkarastis&amp;id=<?=$id?>'">Ištrinti</button>
+			<button type="button" class="btn btn-danger" onclick="location.href='tvarkarastis_redaguoti.php?deleteItem=true&amp;id=<?=$id?>'">Ištrinti</button>
 			<button type="button" class="btn btn-primary" onclick="location.href='tvarkarastis.php?id=<?=$id?>'">Atgal</button>
 			<button type="button" class="btn btn-info" onclick="location.href='tvarkarastis_prideti.php?die=<?=$row['diena']?>&amp;pra=<?=$row['pradzioslaikas_id']?>&amp;pab=<?=$row['pabaigoslaikas_id']?>&amp;gru=<?=$row['grupe_id']?>&amp;pog=<?=$row['pogrupis']?>&amp;dal=<?=$row['dalykas_id']?>&amp;des=<?=$row['destytojas_id']?>&amp;aud=<?=$row['auditorija_id']?>&amp;tip=<?=$row['paskaitos_tipas_id']?>&amp;pasi=<?=$row['pasirenkamasis']?>'">Kopijuoti</button>
 		</form>

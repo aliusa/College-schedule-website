@@ -123,11 +123,15 @@ function selectComplex($sql, $params = [])
 }
 
 function selectSingle($table, $id) {
-	global $pdo;
-	$sql = "SELECT * FROM $table WHERE id = $id LIMIT 1";
-	$stmt = $pdo->query($sql);
-	$row = $stmt->fetch(PDO::FETCH_ASSOC);
-	return $row;
+	try {
+		global $pdo;
+		$sql = "SELECT * FROM $table WHERE id = $id LIMIT 1";
+		$stmt = $pdo->query($sql);
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		return $row;
+	} catch (Exception $e) {
+		return false;
+	}
 }
 
 function descripeTable($table)

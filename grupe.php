@@ -6,7 +6,8 @@
 	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {
-		$id = $_GET['id'];
+		$id = intval($_GET['id']);
+		if ( selectSingle("grupe", $id) === false ) die("Tokios grupės nėra.");
 		$row = selectComplex("
 				SELECT g.id gid, g.pavadinimas gpav, g.elpastas gelpastas, s.pavadinimas spav,
 					f.pavadinimas fpav, st.pavadinimas stpav

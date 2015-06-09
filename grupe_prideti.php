@@ -2,7 +2,7 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "grupe";
-	displayHeader($currentPage, ["grupe_prideti.php"]);
+	displayHeader($currentPage, ["Pridėti grupę"=>"grupe_prideti.php"]);
 
 	// Duomenų gavimas iš lentelės.
 	$rowsSkyrius = selectBasic("skyrius");

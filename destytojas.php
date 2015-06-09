@@ -6,7 +6,8 @@
 	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {
-		$id = $_GET['id'];
+		$id = intval($_GET['id']);
+		if ( selectSingle("destytojas", $id) === false ) die("Tokio destytojo nėra.");
 		$row = selectComplex("
 				SELECT a.id, CONCAT(a.vardas, ' ', a.pavarde) AS destytojas, a.elpastas
 				FROM destytojas AS a

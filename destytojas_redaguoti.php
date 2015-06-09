@@ -4,9 +4,16 @@
 	$currentPage = "destytojas";
 	displayHeader($currentPage, ["Pridėti dėstytoją"=>"destytojas_prideti.php"]);
 
-	if (@$_GET['deleteItem']) {
-		deleteItem($_GET['table'], $_GET['id']);
-		header("Location: destytojas.php");
+	if (isset($_GET['deleteItem'])) {
+		// Ieško ar dėstytojas turi tvarkaraščio įrašų.
+		$s = selectComplex("SELECT COUNT(destytojas_id) FROM tvarkarastis WHERE destytojas_id = ".intval($_GET['id'])." LIMIT 1");
+		// Jei yra įrašas grupės netrina.
+		if ( $s[0]['g'] === 1) {
+			die("Negalima ištrinti grupės. Grupė turi tvarkaraščio įrašų.");
+		} else {
+			deleteItem("destytojas", $_GET['id']);
+			header("Location: destytojas.php");
+		}
 	}
 
 	if ($_POST) {
@@ -54,7 +61,7 @@
 			</div>
 			<button type="submit" class="btn btn-success">Atnaujinti</button>
 			<button type="reset" class="btn btn-warning">Atstatyti</button>
-			<button type="button" class="btn btn-danger" onclick="location.href='destytojas_redaguoti.php?deleteItem=true&table=destytojas&id=<?=$id?>'">Ištrinti</button>
+			<button type="button" class="btn btn-danger" onclick="location.href='destytojas_redaguoti.php?deleteItem=true&id=<?=$id?>'">Ištrinti</button>
 			<button type="button" class="btn btn-primary" onclick="location.href='destytojas.php?id=<?=$id?>'">Atgal</button>
 		</form>
 	</div>

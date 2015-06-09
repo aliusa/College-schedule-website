@@ -5,7 +5,9 @@
 	displayHeader($currentPage, ["Pridėti įrašą"=>"tvarkarastis_prideti.php"]);
 
 	if (@$_GET['id']) {
-		$id = $_GET['id'];
+		$id = intval($_GET['id']);
+		if ( selectSingle("tvarkarastis", $id) === false ) die("Tokio tvarkaraščio nėra.");
+
 		$row = selectComplex("
 				SELECT tv.id tvid, tv.diena tvdiena,
 					pr.laikas prlaikas,
