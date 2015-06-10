@@ -9,6 +9,14 @@
 	margin-left: -1px;
 }
 
-table.tablesorter>tbody>tr {
+table.tablesorter>tbody>tr.clickable {
 	cursor: pointer;
+}
+
+select.multiselect,
+select.multiselect + div.btn-group,
+select.multiselect + div.btn-group button.multiselect,
+select.multiselect + div.btn-group.open .multiselect-container{
+    width:100% !important;
+    text-align: left;
 }

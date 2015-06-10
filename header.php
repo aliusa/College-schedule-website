@@ -6,27 +6,36 @@
 	<head>
 		<title>VKK Tvarkaraštis</title>
 
+		<!-- jQuery-->
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<!--<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+		<!-- Bootstrap -->
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
 		<!-- Optional theme -->
 		<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
-
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<!-- custom stylesheet, javascript -->
 		<link rel="stylesheet" type="text/css" href="style.css">
-
-
-		
-		<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
 		<script type="text/javascript" src="js/js.js"></script>
-		<!-- Include the plugin's CSS and JS: -->
+
+		<!-- Table sorter -->
+		<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+
+		<!-- Bootstrap dropdown multiselect -->
 		<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
 		<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+
+		<!-- Bootstrap multidate picker -->
+		<link rel="stylesheet" href="css/bootstrap-datepicker3.standalone.min.css">
+		<script src="js/bootstrap-datepicker.min.js"></script>
+		
+		<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 	</head>
 	<body id="<?=$id?>">
 

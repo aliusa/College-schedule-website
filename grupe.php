@@ -84,7 +84,7 @@
 		//echo "<th>".$arrTvarkarastis[5]."</th>"; //pogrupis
 		echo "<th>".$arrTvarkarastis[6]."</th>"; //dalykas
 		echo "<th class='hidden-xs'>".$arrTvarkarastis[7]."</th>"; //dėstytojas
-		echo "<th>".$arrTvarkarastis[8]."</th>"; //auditorija
+		echo "<th><span class='hidden-xs'>".$arrTvarkarastis[8]."</span><span class='visible-xs'>Aud.</span></th>"; //auditorija
 		echo "<th class='hidden-xs'>".$arrTvarkarastis[9]."</th>"; //paskaitos tipas
 		//echo "<th>".$arrTvarkarastis[10]."</th>"; //pasirenkamasis
 		echo "</tr></thead><tbody>";
