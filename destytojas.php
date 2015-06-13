@@ -21,14 +21,9 @@
 		if ( isset($_GET['id']) && (@$_SESSION['user_id'] === intval($_GET['id'])) )
 		{
 			$args = ["Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']];
-		} else
-		{
-			$args = null;
 		}
-	} else
-	{
-		$args = null;
 	}
+	$args = !isset($args) ? null : $args ;
 	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {

@@ -5,7 +5,7 @@
 	//$args = ["Pridėti dėstytoją"=>"destytojas_prideti.php"];
 	displayHeader($currentPage);
 
-	if ( isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] >= 1) ) {
+	if ( isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] === 2) ) {
 ?>
 	<div class="well well-lg">
 		<form method="POST" action="destytojas_redaguoti.php">
@@ -31,7 +31,8 @@
 		</form>
 	</div>
 <?php
-	} else {
+	} else
+	{
 		die("Neturi tokių teisių.");
 	}
 	displayFooter();

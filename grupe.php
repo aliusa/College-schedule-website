@@ -2,7 +2,27 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "grupe";
-	$args = isset($_GET['id']) ? ["Pridėti grupę"=>"grupe_prideti.php", "Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?gru=".intval($_GET['id'])] : ["Pridėti grupę"=>"grupe_prideti.php"] ;
+	if (isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] === 2) )
+	{
+		if (isset($_GET['id']))
+		{
+			$args = [
+					"Pridėti grupę"=>"grupe_prideti.php",
+					"Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?gru=".intval($_GET['id']),
+					"Pridėti savo tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?gru=".intval($_GET['id'])."&des=".$_SESSION['user_id']
+					];
+		} else
+		{
+			$args = ["Pridėti grupę"=>"grupe_prideti.php"];
+		}
+	} elseif(@$_SESSION['user_role'] === 1)
+	{
+		if (isset($_GET['id']))
+		{
+			$args = ["Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?gru=".intval($_GET['id'])."&des=".$_SESSION['user_id']];
+		}
+	}
+	$args = !isset($args) ? null : $args ;
 	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {
@@ -32,7 +52,14 @@
 				}
 ?>
 			</table>
+<?php
+			if (isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] === 2))
+			{
+?>
 			<a class="btn btn-primary" href="grupe_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
+<?php
+			}
+?>
 		</div>
 
 

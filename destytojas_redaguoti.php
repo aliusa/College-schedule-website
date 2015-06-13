@@ -7,7 +7,14 @@
 	$currentPage = "destytojas";
 	displayHeader($currentPage, $args);
 
-	if ( ( @$_SESSION['user_id'] === intval($_GET['id'])) || (@$_SESSION['user_role'] === 2) )
+	if (
+		isset($_SESSION['user_is_loggedin'])
+		&& (
+			(@$_SESSION['user_id'] === intval($_GET['id']))
+			||
+			(@$_SESSION['user_role'] === 2)
+			)
+		)
 	{
 		if (isset($_GET['deleteItem'])) {
 			// Ieško ar dėstytojas turi tvarkaraščio įrašų.
