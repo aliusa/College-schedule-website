@@ -180,8 +180,11 @@
 		$arr = headings("destytojas");
 		//echo "<th>".$arr[0]."</th>"; //id
 		echo "<th>".$arr[1]."</th>"; //vardas
-		echo "<th>".$arr[2]."</th>"; //pavardė 
-		echo "<th class='hidden-xs'>".$arr[3]."</th>"; //email
+		echo "<th>".$arr[2]."</th>"; //pavardė
+		if (isset($_SESSION['user_is_loggedin']))
+		{
+			echo "<th class='hidden-xs'>".$arr[3]."</th>"; //email
+		}
 
 		echo "</tr></thead><tbody>";
 
@@ -195,7 +198,10 @@
 			//echo "<td><a href='destytojas.php?id=$id'>$id</a></td>";
 			echo "<td>$vardas</td>";
 			echo "<td>$pavarde</td>";
-			echo "<td class='hidden-xs'><a href='mailto:$elpastas?subject=Žinutė iš tvarkaraščio informacinės sistemos'>$elpastas</a></td>";
+			if (isset($_SESSION['user_is_loggedin']))
+			{
+				echo "<td class='hidden-xs'><a href='mailto:$elpastas?subject=Žinutė iš tvarkaraščio informacinės sistemos'>$elpastas</a></td>";
+			}
 			echo "</tr>";
 		}
 

@@ -160,7 +160,11 @@
 		$arr = headings("grupe");
 		//echo "<th>".$arr[0]."</th>"; //id
 		echo "<th>".$arr[1]."</th>"; //pavadinimas
-		echo "<th class='hidden-xs'>".$arr[2]."</th>"; //el.paštas
+		// Atvaizduoja eilutę, jei prisiloginęs.
+		if (isset($_SESSION['user_is_loggedin']))
+		{
+			echo "<th class='hidden-xs'>".$arr[2]."</th>"; //el.paštas
+		}
 		echo "<th>".$arr[3]."</th>"; //studijų skyrius
 		echo "<th>".$arr[4]."</th>"; //studijų forma
 		echo "<th>".$arr[5]."</th>"; //studijų programa
@@ -178,7 +182,10 @@
 			echo "<tr onclick=\"window.document.location='grupe.php?id=".$gid."';\">";
 			//echo "<td><a href='grupe.php?id=$gid'>$gid</a></td>";
 			echo "<td>$gpav</td>";
-			echo "<td class='hidden-xs'><a href='mailto:$gelpastas?subject=Žinutė iš tvarkaraščio informacinės sistemos'>$gelpastas</a></td>";
+			if (isset($_SESSION['user_is_loggedin']))
+			{
+				echo "<td class='hidden-xs'><a href='mailto:$gelpastas?subject=Žinutė iš tvarkaraščio informacinės sistemos'>$gelpastas</a></td>";
+			}
 			echo "<td>$spav</td>"; //studijų skyrius
 			echo "<td>$fpav</td>"; //studijų forma
 			echo "<td>$stpav</td>"; //studijų programa
