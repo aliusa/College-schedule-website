@@ -14,10 +14,8 @@
 					"Pridėti kitam įrašą"=>"tvarkarastis_prideti.php"
 					];
 		}
-	} else
-	{
-		$args = null;
 	}
+	$args = !isset($args) ? null : $args ;
 	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {
@@ -80,7 +78,15 @@
 			}/**/
 ?>
 		</table>
+<?php
+		// Redaguoti gali tik teises >= 1.
+		if ( isset($_SESSION['user_is_loggedin']) && ( (@$_SESSION['user_role'] >= 1)) )
+		{
+?>
 		<a class="btn btn-primary" href="tvarkarastis_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
+<?php
+		}
+?>
 	</div>
 <?php
 

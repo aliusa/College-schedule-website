@@ -53,9 +53,9 @@ $(document).ready(function() {
 // Bootstrap multidate picker
 $('#cia-yra-multidate .input-group.date').datepicker({
     format: "yyyy-mm-dd",
-    language: "lt",
+    language: "lt-LT",
     multidate: true,
     multidateSeparator: ", ",
-    startDate: "2010-01-01",
-    endDate: "2017-12-31"
+    startDate: "2013-09-01",
+    endDate: "2016-12-31"
 });
