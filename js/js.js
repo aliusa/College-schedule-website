@@ -33,14 +33,21 @@ $(document).ready(function() {
         buttonClass: 'form-control'
     });
 // tvarkarastis_pridet.php - Pogrupis
-    $('.multiselect#pogrupioinputas').multiselect({
+/*    $('.multiselect#pogrupioinputas').multiselect({
         maxHeight: 250,
         enableFiltering: true,
         filterBehavior: 'text',
         enableCaseInsensitiveFiltering: true,
         buttonClass: 'form-control'
-    });
-
+    });/**/
+// tvarkarastis_pridet.php - Pogrupis
+/*    $('.multiselect#pasirenkamasisinputas').multiselect({
+        maxHeight: 250,
+        enableFiltering: true,
+        filterBehavior: 'text',
+        enableCaseInsensitiveFiltering: true,
+        buttonClass: 'form-control'
+    });/**/
 });
 
 // Bootstrap multidate picker

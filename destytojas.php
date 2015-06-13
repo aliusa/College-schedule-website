@@ -2,12 +2,27 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "destytojas";
-	$args = isset($_GET['id']) ? ["Pridėti dėstytoją"=>"destytojas_prideti.php", "Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".intval($_GET['id'])] : ["Pridėti dėstytoją"=>"destytojas_prideti.php"] ;
+
+	if (@$_SESSION['user_role'] === 2)
+	{
+		$args = isset($_GET['id']) ? ["Pridėti dėstytoją"=>"destytojas_prideti.php", "Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".intval($_GET['id'])] : ["Pridėti dėstytoją"=>"destytojas_prideti.php"] ;
+	} elseif (@$_SESSION['user_role'] === 1)
+	{
+		$args = isset($_GET['id']) ? ["Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".intval($_GET['id'])] : null ;
+	} else $args = null;
 	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {
+		/**
+		 * Id yra iš GET url adreso eilutės.
+		 * @var int
+		 */
 		$id = intval($_GET['id']);
 		if ( selectSingle("destytojas", $id) === false ) die("Tokio destytojo nėra.");
+		/**
+		 * Viena eilutė iš dėstytojo lentelės
+		 * @var array
+		 */
 		$row = selectComplex("
 				SELECT a.id, CONCAT(a.vardas, ' ', a.pavarde) AS destytojas, a.elpastas
 				FROM destytojas AS a
@@ -17,6 +32,10 @@
 	<div class="well well-lg">
 		<table>
 <?php
+			/**
+			 * Dėstytojo aprašymo antraštės.
+			 * @var string
+			 */
 			$arr = headings("destytojas");
 			echo "<tr><td><b>".$arr[0]."</b></td><td>".$row[0]['id']."</td></tr>"; //id
 			echo "<tr><td><b>".$arr[1].' '.$arr[2]."</b></td><td>".$row[0]['destytojas']."</td></tr>"; //vardas pavardė
@@ -71,6 +90,10 @@
 		
 
 		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive"><thead><tr>';
+		/**
+		 * Tvarkaraščio lentelės antraštės.
+		 * @var array
+		 */
 		$arrTvarkarastis = headings("tvarkarastis");
 		//echo "<th>".$arrTvarkarastis[0]."</th>"; //id
 		echo "<th>".$arrTvarkarastis[1]."</th>"; //diena
@@ -85,6 +108,10 @@
 		echo "<th class='hidden-xs'>".$arrTvarkarastis[9]."</th>"; //paskaitos tipas
 		echo "</tr></thead><tbody>";
 
+		/**
+		 * Dėstytojo tvarkaraščio užklausų raktai
+		 * @var mixed
+		 */
 		foreach ($rows as $key => $value) {
 			echo "<tr onclick=\"window.document.location='tvarkarastis.php?id=".$value['tvid']."';\">";
 			echo "<td>".date('m/d', strtotime($value['tvdiena']))."</td>";

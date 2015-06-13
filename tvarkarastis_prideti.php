@@ -40,7 +40,7 @@
 				<label for="dienosinputas">Diena</label>
 <?php
 				// Jei pateikta diena - ją ir rodyti. Kitu atveju rodyti šiandienos dieną.
-				$diena = (isset($_GET['die'])) ? $_GET['die'] : date('Y-m-d') ;
+				$diena = (isset($_GET['die'])) ? $_GET['die'] : null ;
 ?>
 				<div class="input-group date">
 					<input type="text" class="form-control" id="dienosinputas" value="<?=$diena?>" required name="diena"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
@@ -53,7 +53,7 @@
 					<label for="pradziainputas">Pradžia</label>
 					<select class="form-control" name="pradzioslaikas_id" id="pradziainputas" required>
 <?php
-						echo "<option value='' selected>&#60;&#60;Pradžia&#62&#62;&#62;</option>";
+						//echo "<option value='' selected>&#60;&#60;Pradžia&#62&#62;&#62;</option>";
 						foreach ($rowsPradzia as $key => $value) {
 							$selected = (@$_GET['pra'] === $value['id']) ? "selected" : null ;
 							echo "<option value=".$value['id']." $selected>".$value['laikas']."</option>";
@@ -66,7 +66,7 @@
 					<label for="pabaigainputas">Pabaiga</label>
 					<select class="form-control" name="pabaigoslaikas_id" id="pabaigainputas">
 <?php
-						echo "<option value='' selected>&#60;&#60;&#60;Pabaiga&#62;&#62;&#62;</option>";
+						//echo "<option value='' selected>&#60;&#60;&#60;Pabaiga&#62;&#62;&#62;</option>";
 						foreach ($rowsPabaiga as $key => $value) {
 							$selected = (@$_GET['pab'] === $value['id']) ? "selected" : null ;
 							echo "<option value=".$value['id']." $selected>".$value['laikas']."</option>";
@@ -91,48 +91,59 @@
 
 				<div class="form-group col-xs-3 col-sm-4">
 					<label for="pogrupioinputas"><span class="hidden-xs">Pogrupis</span><span class="visible-xs">Pogr.</span></label>
-					<select id="pogrupioinputas" class="multiselect" name="pogrupis">
-<?php 					$selected = (isset($_GET['pasi'])) ? $_GET['pasi'] : null ; ?>
+<!--<?php
+					$arr = [
+						['value'=>'1 p.','key'=>'1','class'=>'radio-primary'],
+						['value'=>'2 p.','key'=>'2','class'=>'radio-primary'],
+						['value'=>'visi','key'=>'0','class'=>'radio-success']
+						];
+					$checked = ( isset($_GET['pog']) ) ? "checked" : "checked" ;
+					foreach ($arr as $key => $value) {
+?>
+						<div class="radio radio-inline <?=$value['class']?>">
+						<input type="radio" id="pogrupioinputas<?=$value['key']?>" name="pogrupis" value="<?=$value['key']?>" <?=$checked?> >
+						<label for="pogrupioinputas<?=$value['key']?>"><?=$value['value']?></label>
+						</div>
+<?php
+					}
+?>
+-->
+
+
+					<select id="pogrupioinputas" class="form-control" name="pogrupis">
+<?php 					$selected = (isset($_GET['pog'])) ? $_GET['pog'] : null ; ?>
 						<option value="0" <?=$selected?> >Visi</option>
 						<option value="1" <?=$selected?> >1 pogr.</option>
-						<option value="1" <?=$selected?> >2 pogr.</option>
+						<option value="2" <?=$selected?> >2 pogr.</option>
 					</select>
 				</div> <!-- form-group col-xs-3 col-sm-4 -->
 
 				<div class="form-group col-xs-3 col-sm-4" >
-					<label for="pasirenkamasisinputas"><span class="hidden-xs">Pasirenkamasis</span><span class="visible-xs">Pasirenk.</span></label><br/>
-<?php
-					$arr = ['1'=>'Taip', '0'=>'Ne'];
+					<label for="pasirenkamasisinputas"><span class="hidden-xs">Pasirenkamasis</span><span class="visible-xs">Pasirenk.</span></label>
+<!--<?php
+					$arr = [['value'=>'Taip','key'=>'0','class'=>'radio-success'],['value'=>'Ne','key'=>'1','class'=>'radio-danger']];
 					$checked = ( isset($_GET['pasi']) ) ? "checked" : "checked" ;
 					foreach ($arr as $key => $value) {
 ?>
-						<div class="radio radio-inline">
-						<input type="radio" id="pasirenkamasisinputas<?=$key?>" name="pasirenkamasis" value="<?=$key?>" <?=$checked?> >
-						<label for="pasirenkamasisinputas<?=$key?>"><?=$value?></label>
+						<div class="radio radio-inline <?=$value['class']?>">
+						<input type="radio" id="pasirenkamasisinputas<?=$value['key']?>" name="pasirenkamasis" value="<?=$value['key']?>" <?=$checked?> >
+						<label for="pasirenkamasisinputas<?=$value['key']?>"><?=$value['value']?></label>
 						</div>
 <?php
 					}
-					/*
-					if ( isset($_GET['pasi']) )
-?>
-<?php 				$checked = (@$_GET['pasi'] === "0") ? "checked" : null ; ?>
-					<div class="radio radio-inline">
-						<input type="radio" id="pasirenkamasisinputas0" name="pasirenkamasis" value="0" <?=$checked?> >
-						<label for="pasirenkamasisinputas0">Ne</label>
-					</div>
-<?php 				$checked = (@$_GET['pasi'] === "1") ? "checked" : null ; ?>
-					<div class="radio radio-inline">
-						<input type="radio" id="pasirenkamasisinputas0" name="pasirenkamasis" value="1" <?=$checked?> >
-						<label for="pasirenkamasisinputas0">Taip</label>
-					</div>/**/?>
-					
-					<!--<input type="number" class="form-control" id="pasirenkamasisinputas" name="pasirenkamasis" required min="0", max="2" value="<?=$value?>">
-				--></div> <!-- form-group col-xs-3 col-sm-4 -->
+?>				-->
+
+					<select id="pasirenkamasisinputas" class="form-control" name="pasirenkamasis">
+<?php 					$selected = (isset($_GET['pasi'])) ? $_GET['pasi'] : null ; ?>
+						<option value="0" <?=$selected?> >Ne</option>
+						<option value="1" <?=$selected?> >Taip</option>
+					</select>
+				</div> <!-- form-group col-xs-3 col-sm-4 -->
 			</div> <!-- row -->
 
 			<div class="row">
 				<div class="form-group col-xs-6" >
-					<label for="dalykasinputas">Dalykas</label><br>
+					<label for="dalykasinputas">Dalykas</label>
 					<select class="multiselect" name="dalykas_id" id="dalykasinputas">
 <?php
 						//echo "<option value='' selected>&#60;&#60;&#60;Dalykas&#62;&#62;&#62;</option>";
@@ -145,10 +156,9 @@
 				</div> <!-- form-group col-xs-6 -->
 
 				<div class="form-group col-xs-6">
-					<label for="destytojasinputas">Dėstytojas</label><br>
+					<label for="destytojasinputas">Dėstytojas</label>
 					<select id="destytojasinputas" name="destytojas_id" class="multiselect" >
 <?php
-						//echo "<option value='' selected>&#60;&#60;&#60;Dėstytojas&#62;&#62;&#62;</option>";
 						foreach ($rowsDestytojas as $key => $value) {
 							$selected = (@$_GET['des'] === $value['id']) ? "selected" : null ;
 							echo "<option value=".$value['id']." $selected>".$value['vardas']." ".$value['pavarde']."</option>";
@@ -160,7 +170,7 @@
 
 			<div class="row">
 				<div class="form-group col-xs-6" >
-					<label for="auditorijainputas">Auditorija</label><br>
+					<label for="auditorijainputas">Auditorija</label>
 					<select id="auditorijainputas" class="multiselect" name="auditorija_id">
 <?php
 						foreach ($rowsAuditorija as $key => $value) {

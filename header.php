@@ -1,5 +1,49 @@
 ﻿<?php
-	function displayHeader($id ="" , $params = null) {
+session_start();
+
+/**
+ * Encodes unique username and IP into md5 hash. 
+ * @param string $userName Unique username.
+ */
+function setCookieHash($userName)
+{
+	/**
+	* Get user IP.
+	*/
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	} else {
+		$ip = $_SERVER['REMOTE_ADDR'];
+	}
+
+	$cookiehash = md5($userName . $ip);
+
+	return $cookiehash;
+}
+
+/**
+ * Sets cookie.
+ * @param string $userName Unique username for login.
+ */
+function setCookies($userName)
+{
+	try {
+		$cookiehash = setCookieHash($userName);
+
+		// Sets cookie for 1 year.
+		//setcookie("uname", $cookiehash,time()+3600*24*365);
+		return true;
+	} catch (Exception $e) {
+		die("Could not set cookies.");
+	}
+	
+}
+
+
+	function displayHeader($id ="" , $params = null)
+	{
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +65,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- custom stylesheet, javascript -->
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/js.js"></script>
 
 		<!-- Table sorter -->
@@ -74,34 +118,28 @@
 ?>
               </ul>
             </li>
-          </ul><!--
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul>-->
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    
-
-	
+          </ul>
 <?php
-	}
 
-
-
-
-
-
-	function displayFooter() {
+		// Tikrina ar sesija neprasidėjus.
+		if (isset($_SESSION['user_is_loggedin'])) {
 ?>
-	</div> <!-- /container -->
-	</body>
-</html>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="logout.php">logout</a></li>
+          </ul>
 <?php
+		}
+		echo "</div><!--/.nav-collapse --></div></nav>";
 	}
+//var_dump($_SESSION); // Debug
+
+
+function displayFooter()
+{
+	echo "</div> <!-- /container --></body></html>";
+}
+
+
 
 
 
@@ -139,24 +177,25 @@ function selectSingle($table, $id) {
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $row;
 	} catch (Exception $e) {
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
 		return false;
 	}
 }
 
-function descripeTable($table)
+/*function descripeTable($table)
 {
 	global $pdo;
 	$q = $pdo->prepare("DESCRIBE $table");
 	$q->execute();
 	$table_fields = $q->fetchAll(PDO::FETCH_COLUMN);
 	return $table_fields;
-}
+}/**/
 
 function headings($a)
 {
 	if ($a === "tvarkarastis") return ['Nr',  'Diena', 'Pradžia', 'Pabaiga', 'Grupė', 'Pogrupis', 'Dalykas', 'Dėstytojas', 'Auditorija', 'Tipas', "Pasirenkamasis"];
-	if ($a === "destytojas") return ['Nr', 'Vardas', 'Pavardė', 'El.paštas'];
-	if ($a === "grupe") return ["Nr", "Pavadinimas", "El.paštas", "Studijų skyrius", "Studijų forma", "Studijų programa"];
+	if ($a === "destytojas") return ['Nr', 'Vardas', 'Pavardė', 'El. paštas'];
+	if ($a === "grupe") return ["Nr", "Pavadinimas", "El. paštas", "Studijų skyrius", "Studijų forma", "Studijų programa"];
 }
 
 function deleteItem($table, $id)
@@ -166,3 +205,16 @@ function deleteItem($table, $id)
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute();
 }
+
+function selectSingleUserByUsername($username)
+{
+	global $pdo;
+	$sql = "SELECT id, slaptazodis, teises FROM destytojas WHERE prisijungimas = ? LIMIT 1";
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute([$username]);
+	$item = $stmt->fetchAll();
+	return $item;
+}
+
+
+

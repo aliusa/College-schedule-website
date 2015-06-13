@@ -35,21 +35,27 @@
 			}
 		} else {
 			try {
-				foreach ($_POST['grupe_id'] as $key => $value) {
-					$sql = "INSERT INTO tvarkarastis VALUES (NULL,?,?,?,?,?,?,?,?,?,?)";
-					$stmt = $pdo->prepare($sql);
-					$stmt->execute([
-						date('Y-m-d', strtotime($_POST['diena'])),
-						intval($_POST['pradzioslaikas_id']),
-						intval($_POST['pabaigoslaikas_id']),
-						intval($_POST['grupe_id'][$key]),
-						intval($_POST['pogrupis']),
-						intval($_POST['dalykas_id']),
-						intval($_POST['destytojas_id']),
-						intval($_POST['auditorija_id']),
-						intval($_POST['paskaitos_tipas_id']),
-						intval($_POST['pasirenkamasis']),
-						]);
+				// Datų eilutę paverčia į masyvą.
+				$_POST['diena'] = explode(", ", $_POST['diena']);
+				// Ciklina per dienas
+				foreach ($_POST['diena'] as $key => $value) {
+					// Ciklina per grupes.
+					foreach ($_POST['grupe_id'] as $k => $v) {
+						$sql = "INSERT INTO tvarkarastis VALUES (NULL,?,?,?,?,?,?,?,?,?,?)";
+						$stmt = $pdo->prepare($sql);
+						$stmt->execute([
+							date('Y-m-d', strtotime($_POST['diena'][$key])),
+							intval($_POST['pradzioslaikas_id']),
+							intval($_POST['pabaigoslaikas_id']),
+							intval($_POST['grupe_id'][$k]),
+							intval($_POST['pogrupis']),
+							intval($_POST['dalykas_id']),
+							intval($_POST['destytojas_id']),
+							intval($_POST['auditorija_id']),
+							intval($_POST['paskaitos_tipas_id']),
+							intval($_POST['pasirenkamasis']),
+							]);
+					}
 				}
 			} catch (Exception $e) {
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -97,107 +103,121 @@
 	
 	<div class="well well-lg">
 		<form method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
-			<input type="text" name="id" hidden value="<?=$row['id']?>">
-			<div class="form-group col-sm-4 col-xs-12">
-				<label for="dienosinputas">Diena</label>
-				<input type="date" class="form-control" id="dienosinputas" name="diena" required value="<?=$date?>" />
-			</div>
-			<div class="form-group col-sm-4 col-xs-6" >
-				<label for="pradziainputas">Pradžia</label>
-				<select class="form-control" name="pradzioslaikas_id" id="pradziainputas">
+			<div class="row">
+				<input type="text" name="id" hidden value="<?=$row['id']?>">
+				<div class="form-group col-sm-4 col-xs-12">
+					<label for="dienosinputas">Diena</label>
+					<input type="date" class="form-control" id="dienosinputas" name="diena" required value="<?=$date?>" />
+				</div>
+				<div class="form-group col-sm-4 col-xs-6" >
+					<label for="pradziainputas">Pradžia</label>
+					<select class="form-control" name="pradzioslaikas_id" id="pradziainputas">
 <?php
-					foreach ($rowsPradzia as $key => $value) {
-						$selected = ($row['pradzioslaikas_id'] === $value['id']) ? "selected" : null ;
-						echo "<option value=".$value['id']." ".$selected.">".$value['laikas']."</option>";
-					};
+						foreach ($rowsPradzia as $key => $value) {
+							$selected = ($row['pradzioslaikas_id'] === $value['id']) ? "selected" : null ;
+							echo "<option value=".$value['id']." ".$selected.">".$value['laikas']."</option>";
+						};
 ?>
-				</select>
-			</div>
+					</select>
+				</div>
 
-			<div class="form-group col-sm-4 col-xs-6" >
-				<label for="pabaigainputas">Pabaiga</label>
-				<select class="form-control" name="pabaigoslaikas_id" id="pabaigainputas">
+				<div class="form-group col-sm-4 col-xs-6" >
+					<label for="pabaigainputas">Pabaiga</label>
+					<select class="form-control" name="pabaigoslaikas_id" id="pabaigainputas">
 <?php
-					foreach ($rowsPabaiga as $key => $value) {
-						$selected = ($row['pabaigoslaikas_id'] === $value['id']) ? "selected" : null ;
-						echo "<option value=".$value['id']." $selected>".$value['laikas']."</option>";
-					};
+						foreach ($rowsPabaiga as $key => $value) {
+							$selected = ($row['pabaigoslaikas_id'] === $value['id']) ? "selected" : null ;
+							echo "<option value=".$value['id']." $selected>".$value['laikas']."</option>";
+						};
 ?>
-				</select>
-			</div>
+					</select>
+				</div>
+			</div> <!-- row -->
 
-			<div class="form-group col-xs-4" >
-				<label for="example-getting-started">Grupė</label>
-<br>
-				<select id="example-getting-started" name="grupe_id">
+			<div class="row">
+				<div class="form-group col-xs-6 col-sm-4" >
+					<label for="grupeinputas">Grupė</label>
+					<select id="grupeinputas" class="multiselect" name="grupe_id">
 <?php
-					foreach ($rowsGrupe as $key => $value) {
-						$selected = ((@$_GET['gru'] === $value['id']) || ($row['grupe_id'] === $value['id'])) ? "selected" : null ;
-						echo "<option value=".$value['id']." $selected>".$value['pavadinimas']."</option>";
-					};
+						foreach ($rowsGrupe as $key => $value) {
+							$selected = ((@$_GET['gru'] === $value['id']) || ($row['grupe_id'] === $value['id'])) ? "selected" : null ;
+							echo "<option value=".$value['id']." $selected>".$value['pavadinimas']."</option>";
+						};
 ?>
-				</select>
-			</div>
+					</select>
+				</div>
 
-			<div class="form-group col-xs-4">
-				<label for="pogrupioinputas">Pogrupis</label>
+				<div class="form-group col-xs-3 col-sm-4">
+					<label for="pogrupioinputas"><span class="hidden-xs">Pogrupis</span><span class="visible-xs">Pogr.</span></label>
+					<select id="pogrupioinputas" class="form-control" name="pogrupis">
+<?php 					$selected = (isset($_GET['pog'])) ? $_GET['pog'] : null ; ?>
+						<option value="0" <?=$selected?> >Visi</option>
+						<option value="1" <?=$selected?> >1 pogr.</option>
+						<option value="2" <?=$selected?> >2 pogr.</option>
+					</select>
+				</div>
 
-				<input type="text" class="form-control" id="pogrupioinputas" name="pogrupis" required value="<?=$row['pogrupis']?>">
-			</div>
+				<div class="form-group col-xs-3 col-sm-4" >
+					<label for="pasirenkamasisinputas"><span class="hidden-xs">Pasirenkamasis</span><span class="visible-xs">Pasir.</span></label>
+					<select id="pasirenkamasisinputas" class="form-control" name="pasirenkamasis">
+<?php 					$selected = (isset($_GET['pasi'])) ? $_GET['pasi'] : null ; ?>
+						<option value="0" <?=$selected?> >Ne</option>
+						<option value="1" <?=$selected?> >Taip</option>
+					</select>
+				</div>
+			</div> <!-- row -->
 
-			<div class="form-group col-xs-4" >
-				<label for="pasirenkamasisinputas">Pasirenkamasis</label>
-				<input type="text" class="form-control" id="pasirenkamasisinputas" name="pasirenkamasis" required value="<?=$row['pasirenkamasis']?>">
-			</div>
-
-			<div class="form-group col-md-6" >
-				<label for="dalykasinputas">Dalykas</label>
-				<select class="form-control" name="dalykas_id" id="dalykasinputas">
+			<div class="row">
+				<div class="form-group col-md-6" >
+					<label for="dalykasinputas">Dalykas</label>
+					<select class="form-control" name="dalykas_id" id="dalykasinputas">
 <?php
-					foreach ($rowsDalykas as $key => $value) {
-						$selected = ($row['dalykas_id'] === $value['id']) ? "selected" : null ;
-						echo "<option value=".$value['id']." ".$selected.">".$value['pavadinimas']."</option>";
-					};
+						foreach ($rowsDalykas as $key => $value) {
+							$selected = ($row['dalykas_id'] === $value['id']) ? "selected" : null ;
+							echo "<option value=".$value['id']." ".$selected.">".$value['pavadinimas']."</option>";
+						};
 ?>
-				</select>
-			</div>
+					</select>
+				</div>
 
-			<div class="form-group col-md-6" >
-				<label for="destytojasinputas">Dėstytojas</label>
-				<select class="form-control" name="destytojas_id" id="destytojasinputas">
+				<div class="form-group col-md-6" >
+					<label for="destytojasinputas">Dėstytojas</label>
+					<select id="destytojasinputas" name="destytojas_id" class="multiselect" >
 <?php
-					foreach ($rowsDestytojas as $key => $value) {
-						$selected = ($row['destytojas_id'] === $value['id']) ? "selected" : null ;
-						echo "<option value=".$value['id']." ".$selected.">".$value['vardas']." ".$value['pavarde']."</option>";
-					};
+						foreach ($rowsDestytojas as $key => $value) {
+							$selected = ($row['destytojas_id'] === $value['id']) ? "selected" : null ;
+							echo "<option value=".$value['id']." ".$selected.">".$value['vardas']." ".$value['pavarde']."</option>";
+						};
 ?>
-				</select>
-			</div>
+					</select>
+				</div>
+			</div> <!-- row -->
 
-			<div class="form-group col-xs-6 col-sm-4" >
-				<label for="example-getting-started2">Auditorija</label><br>
-				<select id="example-getting-started2" name="auditorija_id">
+			<div class="row">
+				<div class="form-group col-xs-6" >
+					<label for="auditorijainputas">Auditorija</label>
+					<select id="auditorijainputas" class="multiselect" name="auditorija_id">
 <?php
-					foreach ($rowsAuditorija as $key => $value) {
-						$selected = ($row['auditorija_id'] === $value['aid']) ? "selected" : null ;
-						echo "<option value=".$value['aid']." $selected>".$value['apav']." (".$value['spav'].")</option>";
-						//echo "<option value=".$value['aid']." $selected>".$value['apav']." (".$value['spav'].")</option>";
-					};
+						foreach ($rowsAuditorija as $key => $value) {
+							$selected = ($row['auditorija_id'] === $value['aid']) ? "selected" : null ;
+							echo "<option value=".$value['aid']." $selected>".$value['apav']." (".$value['spav'].")</option>";
+						};
 ?>
-				</select>
-			</div>
+					</select>
+				</div>
 
-			<div class="form-group col-xs-6 col-sm-8" >
-				<label for="paskaitostipoinputas">Tipas</label>
-				<select class="form-control" name="paskaitos_tipas_id" id="paskaitostipoinputas">
+				<div class="form-group col-xs-6" >
+					<label for="paskaitostipoinputas">Tipas</label>
+					<select class="form-control" name="paskaitos_tipas_id" id="paskaitostipoinputas">
 <?php
-					foreach ($rowsPaskaitosTipas as $key => $value) {
-						$selected = ($row['paskaitos_tipas_id'] === $value['id']) ? "selected" : null ;
-						echo "<option value=".$value['id']." ".$selected.">".$value['pavadinimas']."</option>";
-					};
+						foreach ($rowsPaskaitosTipas as $key => $value) {
+							$selected = ($row['paskaitos_tipas_id'] === $value['id']) ? "selected" : null ;
+							echo "<option value=".$value['id']." ".$selected.">".$value['pavadinimas']."</option>";
+						};
 ?>
-				</select>
-			</div>
+					</select>
+				</div>
+			</div> <!-- row -->
 
 			<button type="submit" class="btn btn-success">Atnaujinti</button>
 			<button type="reset" class="btn btn-warning">Atstatyti</button>
