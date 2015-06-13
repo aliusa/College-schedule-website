@@ -2,7 +2,23 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "tvarkarastis";
-	displayHeader($currentPage, ["Pridėti įrašą"=>"tvarkarastis_prideti.php"]);
+	if ( isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] >= 1) )
+	{
+		if (@$_SESSION['user_role'] === 1)
+		{
+			$args = ["Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']];
+		} elseif (@$_SESSION['user_role'] === 2)
+		{
+			$args = [
+					"Pridėti sau įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
+					"Pridėti kitam įrašą"=>"tvarkarastis_prideti.php"
+					];
+		}
+	} else
+	{
+		$args = null;
+	}
+	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {
 		$id = intval($_GET['id']);
