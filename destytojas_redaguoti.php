@@ -66,7 +66,15 @@
 				</div>
 				<button type="submit" class="btn btn-success">Atnaujinti</button>
 				<button type="reset" class="btn btn-warning">Atstatyti</button>
-				<button type="button" class="btn btn-danger" onclick="location.href='destytojas_redaguoti.php?deleteItem=true&id=<?=$id?>'">Ištrinti</button>
+<?php
+				// Ištrinti gali tik adminai.
+				if ( (isset($_SESSION['user_is_loggedin'])) && (@$_SESSION['user_role'] === 2) )
+				{
+?>
+					<button type="button" class="btn btn-danger" onclick="location.href='destytojas_redaguoti.php?deleteItem=true&id=<?=$id?>'">Ištrinti</button>
+<?php
+				}
+?>
 				<button type="button" class="btn btn-primary" onclick="location.href='destytojas.php?id=<?=$id?>'">Atgal</button>
 			</form>
 		</div>

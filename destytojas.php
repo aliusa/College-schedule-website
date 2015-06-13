@@ -175,6 +175,7 @@
 		$rows = selectComplex('
 			SELECT *
 			FROM destytojas
+			WHERE paslepti = 0
 			ORDER BY pavarde ASC, vardas ASC
 			');
 
