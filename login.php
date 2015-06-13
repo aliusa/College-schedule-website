@@ -31,8 +31,10 @@
 		if ( ($user <> false) && ($user[0][1] === $result) )
 		{
 			$_SESSION['user_is_loggedin'] = true;
-			$_SESSION['user_id'] = intval($user[0][0]);
-			$_SESSION['user_role'] = intval($user[0][2]);
+			$_SESSION['user_id'] = intval($user[0][0]); // User ID from DB.
+			$_SESSION['user_role'] = intval($user[0][2]); // User roles from DB.
+			$_SESSION['user_pavarde'] = $user[0][3]; // User short name.
+
 
 			// Įrašom slapuką.
 			//setCookies($userName);

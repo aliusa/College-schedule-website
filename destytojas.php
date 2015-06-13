@@ -42,8 +42,16 @@
 			echo "<tr><td><b>".$arr[3]."</b></td><td>".$row[0]['elpastas']."</td></tr>"; //elpaštas
 ?>
 		</table>
-		<a class="btn btn-primary" href="destytojas_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
-	</div>
+<?php
+		// Redaguoti gali tik teises lygiu 2 arba pats save.
+		if ( (@$_SESSION['user_role'] === 2) || (@$_SESSION['user_id'] === $id) )
+		{
+?>
+			<a class="btn btn-primary" href="destytojas_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
+<?php
+		}
+?>
+	</div> <!-- well well-lg -->
 
 
 

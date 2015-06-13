@@ -125,6 +125,7 @@ function setCookies($userName)
 		if (isset($_SESSION['user_is_loggedin'])) {
 ?>
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="destytojas.php?id=<?=$_SESSION['user_id']?>"><?=$_SESSION['user_pavarde']?></a></li>
             <li><a href="logout.php">logout</a></li>
           </ul>
 <?php
@@ -206,10 +207,11 @@ function deleteItem($table, $id)
 	$stmt->execute();
 }
 
+// Data for SESSION
 function selectSingleUserByUsername($username)
 {
 	global $pdo;
-	$sql = "SELECT id, slaptazodis, teises FROM destytojas WHERE prisijungimas = ? LIMIT 1";
+	$sql = "SELECT d.id, d.slaptazodis, d.teises, d.pavarde FROM destytojas d WHERE d.prisijungimas = ? LIMIT 1";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$username]);
 	$item = $stmt->fetchAll();
