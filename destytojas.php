@@ -5,11 +5,30 @@
 
 	if (@$_SESSION['user_role'] === 2)
 	{
-		$args = isset($_GET['id']) ? ["Pridėti dėstytoją"=>"destytojas_prideti.php", "Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".intval($_GET['id'])] : ["Pridėti dėstytoją"=>"destytojas_prideti.php"] ;
+		if ( isset($_GET['id']) )
+		{
+			$args = [
+					"Pridėti dėstytoją"=>"destytojas_prideti.php",
+					"Pridėti šiam dėstytojui tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".intval($_GET['id']),
+					"Pridėti savo tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']
+					];
+		} else
+		{
+			$args = ["Pridėti dėstytoją"=>"destytojas_prideti.php"];
+		}
 	} elseif (@$_SESSION['user_role'] === 1)
 	{
-		$args = isset($_GET['id']) ? ["Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".intval($_GET['id'])] : null ;
-	} else $args = null;
+		if ( isset($_GET['id']) && (@$_SESSION['user_id'] === intval($_GET['id'])) )
+		{
+			$args = ["Pridėti tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']];
+		} else
+		{
+			$args = null;
+		}
+	} else
+	{
+		$args = null;
+	}
 	displayHeader($currentPage, $args);
 
 	if (@$_GET['id']) {

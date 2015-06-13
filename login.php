@@ -35,7 +35,6 @@
 			$_SESSION['user_role'] = intval($user[0][2]); // User roles from DB.
 			$_SESSION['user_pavarde'] = $user[0][3]; // User short name.
 
-
 			// Įrašom slapuką.
 			//setCookies($userName);
 

@@ -2,9 +2,10 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "destytojas";
-	$args = ["Pridėti dėstytoją"=>"destytojas_prideti.php"];
-	displayHeader($currentPage, $args);
+	//$args = ["Pridėti dėstytoją"=>"destytojas_prideti.php"];
+	displayHeader($currentPage);
 
+	if ( isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] >= 1) ) {
 ?>
 	<div class="well well-lg">
 		<form method="POST" action="destytojas_redaguoti.php">
@@ -29,6 +30,8 @@
 			<button type="reset" class="btn btn-warning">Atstatyti</button>
 		</form>
 	</div>
-	
 <?php
+	} else {
+		die("Neturi tokių teisių.");
+	}
 	displayFooter();
