@@ -119,21 +119,17 @@
 		$arrTvarkarastis = headings("tvarkarastis");
 		//echo "<th>".$arrTvarkarastis[0]."</th>"; //id
 		echo "<th>".$arrTvarkarastis[1]."</th>"; //diena
-		echo "<th><span class='hidden-xs'>".$arrTvarkarastis[2]." - ".$arrTvarkarastis[3]."</span><span class='visible-xs'>Laikas</span></th>"; //pradžia
+		echo "<th><span class='hidden-sm hidden-xs'>".$arrTvarkarastis[2]." - ".$arrTvarkarastis[3]."</span><span class='visible-sm visible-xs'>Laikas</span></th>"; //pradžia
 		//echo "<th>".$arrTvarkarastis[3]."</th>"; //pabaiga
 		$pogrupis = ($arrTvarkarastis[5] === "0" ) ? null : " (".$arrTvarkarastis[5].")";
 		echo "<th>".$arrTvarkarastis[4]."<span class='hidden-xs'>$pogrupis</span></th>"; //grupė
 		//echo "<th>".$arrTvarkarastis[5]."</th>"; //pogrupis
 		echo "<th>".$arrTvarkarastis[6]."</th>"; //dalykas
 		//echo "<th>".$arrTvarkarastis[7]."</th>"; //dėstytojas
-		echo "<th>".$arrTvarkarastis[8]."</th>"; //auditorija
+		echo "<th><span class='hidden-sm hidden-xs'>".$arrTvarkarastis[8]."</span><span class='visible-sm visible-xs'>Aud.</span></th>"; //auditorija
 		echo "<th class='hidden-xs'>".$arrTvarkarastis[9]."</th>"; //paskaitos tipas
 		echo "</tr></thead><tbody>";
 
-		/**
-		 * Dėstytojo tvarkaraščio užklausų raktai
-		 * @var mixed
-		 */
 		foreach ($rows as $key => $value) {
 			echo "<tr onclick=\"window.document.location='tvarkarastis.php?id=".$value['tvid']."';\">";
 			echo "<td>".date('m/d', strtotime($value['tvdiena']))."</td>";
