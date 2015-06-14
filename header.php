@@ -126,7 +126,7 @@ function setCookies($userName)
 ?>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="destytojas.php?id=<?=$_SESSION['user_id']?>"><?=$_SESSION['user_pavarde']?></a></li>
-            <li><a href="logout.php">logout</a></li>
+            <li><a href="logout.php">išeiti</a></li>
           </ul>
 <?php
 		}
