@@ -101,7 +101,15 @@ function setCookies($userName)
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+<?php
+			// Atvaizduoja tvarkaraščio mygtuką, jei naudotojas prisijungęs.
+			if (isset($_SESSION['user_is_loggedin']))
+			{
+?>
             <li class="<?php echo ($id==='tvarkarastis')?'active':'';?>"><a href="tvarkarastis.php">Tvarkaraštis</a></li>
+<?php
+			}
+?>
             <li class="<?=($id==='destytojas')?'active':'';?>"><a href="destytojas.php">Dėstytojai</a></li>
             <li class="<?=($id==='grupe')?'active':'';?>"><a href="grupe.php">Grupės</a></li>
 <?php
