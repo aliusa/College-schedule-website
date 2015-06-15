@@ -11,7 +11,7 @@
 		{
 			$args = [
 					"Pridėti sau įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
-					"Pridėti kitam įrašą"=>"tvarkarastis_prideti.php"
+					"Pridėti įrašą"=>"tvarkarastis_prideti.php"
 					];
 		}
 	}
@@ -134,13 +134,13 @@
 
 		//echo "<th>".$arr[0]."</th>"; //id
 		echo "<th>".$arr[1]."</th>"; //diena
-		echo "<th>".$arr[2]."</th>"; //pradžios laikas
-		echo "<th class='hidden-xs'>".$arr[3]."</th>"; //pabaigos laikas
+		echo "<th>Laikas</th>"; //pradžios laikas
+		//echo "<th class='hidden-xs'>".$arr[3]."</th>"; //pabaigos laikas
 		echo "<th>".$arr[4]."</th>"; //grupė
 		//echo "<th>".$arr[5]."</th>"; //pogrupis
 		echo "<th>".$arr[6]."</th>"; //dalykas
 		echo "<th class='hidden-xs'>".$arr[7]."</th>"; //dėstytojas
-		echo "<th class='hidden-xs'>".$arr[8]."</th>"; //auditorija
+		echo "<th>Aud.</th>"; //auditorija
 		echo "<th class='hidden-xs'>".$arr[9]."</th>"; //paskaitos tipas
 		
 
@@ -169,14 +169,14 @@
 			echo "<tr onclick=\"window.document.location='tvarkarastis.php?id=".$tvid."';\">";
 			//echo "<td><a href='index.php?id=$tvid'>$tvid</a></td>";
 			echo "<td>".$tvdiena."</td>";
-			echo "<td>".$prlaikas."<span class='visible-xs'>(".$aupavadinimas.")</span></td>";
-			echo "<td class='hidden-xs'>".$palaikas."</td>";
+			echo "<td>$prlaikas - $palaikas</td>";
+			//echo "<td class='hidden-xs'>".$palaikas."</td>";
 			echo "<td><a href='grupe.php?id=$grid'>$grpavadinimas$pogrupis$pasi</a></td>";
 			//echo "<td>$pogrupis</td>";
 			//echo "<td><a href='dalykas.php?id=$daid'>".$dapavadinimas."</td>";
 			echo "<td>$dapavadinimas</td>";
 			echo "<td class='hidden-xs'><a href='destytojas.php?id=$deid'>$destytojas</a></td>";
-			echo "<td class='hidden-xs'>$aupavadinimas</td>";
+			echo "<td>$aupavadinimas</td>";
 			echo "<td class='hidden-xs'>$paspavadinimas</td>";
 			echo "</tr>";
 		}
