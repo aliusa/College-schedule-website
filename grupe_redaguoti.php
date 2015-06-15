@@ -13,7 +13,7 @@
 			$s = selectComplex("SELECT COUNT(grupe_id) as g FROM tvarkarastis WHERE grupe_id = ".intval($_GET['id'])." LIMIT 1");
 			// Jei yra įrašas grupės netrina.
 			if ( $s[0]['g'] === 1) {
-				die("Negalima ištrinti grupės. Grupė turi tvarkaraščio įrašų.");
+				die("Negalima ištrinti grupės, kuri turi tvarkaraščio įrašų.");
 			} else {
 				deleteItem("grupe", $_GET['id']);
 				header("Location: grupe.php");

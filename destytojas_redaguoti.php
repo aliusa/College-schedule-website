@@ -10,18 +10,18 @@
 	if (
 		isset($_SESSION['user_is_loggedin'])
 		&& (
-			(@$_SESSION['user_id'] === intval($_GET['id']))
+			($_SESSION['user_id'] === intval($_GET['id']))
 			||
-			(@$_SESSION['user_role'] === 2)
+			($_SESSION['user_role'] === 2)
 			)
 		)
 	{
 		if (isset($_GET['deleteItem'])) {
 			// Ieško ar dėstytojas turi tvarkaraščio įrašų.
-			$s = selectComplex("SELECT COUNT(destytojas_id) FROM tvarkarastis WHERE destytojas_id = ".intval($_GET['id'])." LIMIT 1");
+			$s = selectComplex("SELECT COUNT(destytojas_id) as g FROM tvarkarastis WHERE destytojas_id = ".intval($_GET['id'])." LIMIT 1");
 			// Jei yra įrašas grupės netrina.
 			if ( $s[0]['g'] === 1) {
-				die("Negalima ištrinti grupės. Grupė turi tvarkaraščio įrašų.");
+				die("Negalima ištrinti dėstytojo, kuris turi tvarkaraščio įrašų.");
 			} else {
 				deleteItem("destytojas", $_GET['id']);
 				header("Location: destytojas.php");
@@ -37,10 +37,11 @@
 				//echo "<script type='text/javascript'>alert('Duomenys sėkmingai atnaujinti!');</script>";
 			} else {
 				try {
-					$sql = "INSERT INTO destytojas VALUES (NULL,?,?,?)";
+					$pastas = (strlen($_POST['elpastas']) < 5) ? NULL : $_POST['elpastas'] ;
+					$sql = "INSERT INTO `destytojas` (`vardas`, `pavarde`, `elpastas`) VALUES (?,?,?)";
 					$stmt = $pdo->prepare($sql);
-					$stmt->execute([$_POST['vardas'], $_POST['pavarde'], $_POST['elpastas']]);
-					header("Location: destytojas.php");
+					$stmt->execute([$_POST['vardas'], $_POST['pavarde'], $pastas]);
+					//header("Location: destytojas.php");
 				} catch (Exception $e) {
 					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
