@@ -19,10 +19,11 @@
 	displayHeader($currentPage, $args);
 
 	// Tvarkaraščio sąrašas paslepiamas nuo neprisijungusių naudotojų.
-	if (!isset($_SESSION['user_is_loggedin']))
+	if ( !isset($_SESSION['user_is_loggedin']) && !isset($_GET['id']) )
 	{
 		die("Neturi tokių teisių.");
 	}
+
 	if (@$_GET['id']) {
 		$id = intval($_GET['id']);
 		if ( selectSingle("tvarkarastis", $id) === false ) die("Tokio tvarkaraščio nėra.");
