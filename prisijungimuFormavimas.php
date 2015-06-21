@@ -1,7 +1,37 @@
-Generuoti naudotojo prisijumo duomenis reikia nurodyti jo ID iš DB, pvz:<br/>
-<i>/prisijungimuFormavimas.php?id=5</i><hr/>
-<?php
+﻿<?php
 	require_once('connections.php');
+	require('header.php');
+	displayHeader();
+
+	if ( !isset($_SESSION['user_is_loggedin']) || ($_SESSION['user_role'] <> 2 ) ) die("Neturit tokių teisių");
+
+	if (isset($_POST))
+	{
+		if (isset($_POST['user']) && isset($_POST['pass']) && isset($_POST['id']))
+		{
+			try {
+				$user = $_POST['user'];
+				$pass = $_POST['pass'];
+				$id = intval($_POST['id']);
+				$sql = "
+					UPDATE destytojas
+					SET
+						prisijungimas = ?,
+						slaptazodis = ?
+					WHERE id = ?";
+				$stmt = $pdo->prepare($sql);
+				$stmt->execute([
+					$user,
+					$pass,
+					$id
+					]);
+				//echo "<script type='text/javascript'>alert('Duomenys sėkmingai atnaujinti!');</script>";
+				//header("Location: tvarkarastis.php?id=".$_POST['id']);
+			} catch (Exception $e) {
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
+	}
 
 	/**
 	 * Gauna vardą, pavardės 2 pirmas raides.
@@ -28,6 +58,8 @@ Generuoti naudotojo prisijumo duomenis reikia nurodyti jo ID iš DB, pvz:<br/>
 		return rand(pow(10, $digits-1), pow(10, $digits)-1);
 	}
 
+	echo "Generuoti naudotojo prisijumo duomenis reikia nurodyti jo ID iš DB.<hr/>";
+
 	// Gaunam vardą, pavardę.
 	$user = generate_login();
 
@@ -46,4 +78,18 @@ Generuoti naudotojo prisijumo duomenis reikia nurodyti jo ID iš DB, pvz:<br/>
 	$salt = 'kk^^kk$topkek$alius#';
 	$result = md5($pass . $salt); // pvz - df6664ede71b6a8c6ccdd2671a694d2d
 	echo "slaptažodis: ".$result." (užkoduotas)";
+?>
+	<style>
+	.hidden {display:none;}
+	</style>
+	<hr/>
 
+	<form action="<?=$_SERVER['PHP_SELF']?>?id=<?=$_GET['id']?>" method="POST" role="form">
+		<div class="form-group">
+			<input type="text" class="form-control hidden" name="user" value="<?=$user?>">
+			<input type="text" class="form-control hidden" name="pass" value="<?=$result?>">
+			<input type="text" class="form-control hidden" name="id" value="<?=$_GET['id']?>">
+		</div>
+
+		<button type="submit" class="btn btn-primary">Įrašyti</button>
+	</form>

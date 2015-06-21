@@ -80,6 +80,7 @@
 				{
 ?>
 					<button type="button" class="btn btn-danger" onclick="location.href='destytojas_redaguoti.php?deleteItem=true&id=<?=$id?>'">Ištrinti</button>
+					<button type="button" class="btn btn-danger" onclick="location.href='prisijungimuFormavimas.php?id=<?=$id?>'">Koreguoti</button>
 <?php
 				}
 ?>
