@@ -6,19 +6,24 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+CREATE DATABASE IF NOT EXISTS `tvarkarastis_vkk` DEFAULT CHARACTER SET utf8 COLLATE utf8_lithuanian_ci;
+USE `tvarkarastis_vkk`;
 
+DROP TABLE IF EXISTS `auditorija`;
 CREATE TABLE IF NOT EXISTS `auditorija` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(45) NOT NULL,
   `skyrius_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `dalykas`;
 CREATE TABLE IF NOT EXISTS `dalykas` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(255) NOT NULL,
   `arPaskaita` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `destytojas`;
 CREATE TABLE IF NOT EXISTS `destytojas` (
   `id` int(11) NOT NULL,
   `vardas` varchar(45) NOT NULL,
@@ -31,11 +36,13 @@ CREATE TABLE IF NOT EXISTS `destytojas` (
   `tekstas` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `forma`;
 CREATE TABLE IF NOT EXISTS `forma` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `grupe`;
 CREATE TABLE IF NOT EXISTS `grupe` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(10) NOT NULL,
@@ -45,31 +52,37 @@ CREATE TABLE IF NOT EXISTS `grupe` (
   `studijos_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `pabaigoslaikas`;
 CREATE TABLE IF NOT EXISTS `pabaigoslaikas` (
   `id` int(11) NOT NULL,
   `laikas` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `paskaitos_tipas`;
 CREATE TABLE IF NOT EXISTS `paskaitos_tipas` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `pradzioslaikas`;
 CREATE TABLE IF NOT EXISTS `pradzioslaikas` (
   `id` int(11) NOT NULL,
   `laikas` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `skyrius`;
 CREATE TABLE IF NOT EXISTS `skyrius` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `studijos`;
 CREATE TABLE IF NOT EXISTS `studijos` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `tvarkarastis`;
 CREATE TABLE IF NOT EXISTS `tvarkarastis` (
   `id` int(11) NOT NULL,
   `diena` date DEFAULT NULL,
