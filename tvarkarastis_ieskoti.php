@@ -40,8 +40,14 @@
 	<form action="<?=$_SERVER['PHP_SELF']?>" method="GET" class="form-inline" role="form">
 	
 		<div class="form-group">
-			<label class="sr-only" for="">label</label>
-			<input type="search" name="" id="input" class="form-control" value="" required="required" title="">
+            <div class="row">
+                <label class="sr-only" for="">label</label>
+                <input type="search" name="" id="input" class="form-control" value="" required="required" title="">
+            </div>
+            <div class="row">
+            	<label class="sr-only" for="">label</label>
+                <input type="search" name="" id="input" class="form-control" value="" required="required" title="">
+            </div>
 		</div>
 	
 		

@@ -80,6 +80,9 @@ function setCookies($userName)
 		<script src="js/bootstrap-datepicker.min.js"></script>
 		
 		<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
+
+		<!-- Bootstrap table searcher -->
+		<script src="js/jquery.searchable-1.1.0.min.js"></script>
 	</head>
 	<body id="<?=$id?>">
 

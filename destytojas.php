@@ -44,27 +44,34 @@
 				LIMIT 1");
 ?>
 	<div class="well well-lg">
-		<table>
+		<div class="row">
+			<table>
 <?php
-			/**
-			 * Dėstytojo aprašymo antraštės.
-			 * @var string
-			 */
-			$arr = headings("destytojas");
-			echo "<tr><td><b>".$arr[0]."</b></td><td>".$row[0]['id']."</td></tr>"; //id
-			echo "<tr><td><b>".$arr[1].' '.$arr[2]."</b></td><td>".$row[0]['destytojas']."</td></tr>"; //vardas pavardė
-			echo "<tr><td><b>".$arr[3]."</b></td><td>".$row[0]['elpastas']."</td></tr>"; //elpaštas
+				/**
+				 * Dėstytojo aprašymo antraštės.
+				 * @var string
+				 */
+				$arr = headings("destytojas");
+				echo "<tr><td><b>".$arr[0]."</b></td><td>".$row[0]['id']."</td></tr>"; //id
+				echo "<tr><td><b>".$arr[1].' '.$arr[2]."</b></td><td>".$row[0]['destytojas']."</td></tr>"; //vardas pavardė
+				echo "<tr><td><b>".$arr[3]."</b></td><td>".$row[0]['elpastas']."</td></tr>"; //elpaštas
 ?>
-		</table>
+			</table>
 <?php
-		// Redaguoti gali tik teises lygiu 2 arba pats save.
-		if ( (@$_SESSION['user_role'] === 2) || (@$_SESSION['user_id'] === $id) )
-		{
+			// Redaguoti gali tik teises lygiu 2 arba pats save.
+			if ( (@$_SESSION['user_role'] === 2) || (@$_SESSION['user_id'] === $id) )
+			{
 ?>
-			<a class="btn btn-primary" href="destytojas_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
+				<a class="btn btn-primary" href="destytojas_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
 <?php
-		}
+			}
 ?>
+		</div><br>
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriuoju būdu!">
+			</div>
+		</div>
 	</div> <!-- well well-lg -->
 
 
@@ -110,7 +117,9 @@
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
-
+?>
+		
+<?php
 		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive"><thead><tr>';
 		/**
 		 * Tvarkaraščio lentelės antraštės.
@@ -209,6 +218,7 @@
 		$(document).ready(function() 
 			{
 				$("#myTable").tablesorter();
+				$('#myTable').searchable();
 			}
 		);
 	</script>
