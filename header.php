@@ -128,7 +128,6 @@ function setCookies($userName)
             </li>
           </ul>
 <?php
-
 		// Tikrina ar sesija neprasidėjus.
 		if (isset($_SESSION['user_is_loggedin'])) {
 ?>

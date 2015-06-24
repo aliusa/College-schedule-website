@@ -2,16 +2,23 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "tvarkarastis";
+	// Jei naudotojas prisijungęs ir teisės >= 1.
 	if ( isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] >= 1) )
 	{
+		// Jei dėstytojo teisės.
 		if (@$_SESSION['user_role'] === 1)
 		{
-			$args = ["Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']];
+			$args = [
+				"Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
+				"Ieškoti"=>"tvarkarastis_ieskoti.php"
+				];
+		// Jei administratoriaus teisės.
 		} elseif (@$_SESSION['user_role'] === 2)
 		{
 			$args = [
 					"Pridėti sau įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
-					"Pridėti įrašą"=>"tvarkarastis_prideti.php"
+					"Pridėti įrašą"=>"tvarkarastis_prideti.php",
+					"Ieškoti"=>"tvarkarastis_ieskoti.php"
 					];
 		}
 	}

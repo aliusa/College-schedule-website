@@ -6,12 +6,16 @@
 	{
 		if (@$_SESSION['user_role'] === 1)
 		{
-			$args = ["Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']];
+			$args = [
+				"Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
+				"Ieškoti"=>"tvarkarastis_ieskoti.php"
+				];
 		} elseif (@$_SESSION['user_role'] === 2)
 		{
 			$args = [
 					"Pridėti sau įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
-					"Pridėti kitam įrašą"=>"tvarkarastis_prideti.php"
+					"Pridėti kitam įrašą"=>"tvarkarastis_prideti.php",
+					"Ieškoti"=>"tvarkarastis_ieskoti.php"
 					];
 		}
 	}

@@ -5,6 +5,6 @@
 	displayHeader($currentPage);
 
 ?>
-
+	
 <?php
 	displayFooter();
