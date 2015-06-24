@@ -1,9 +1,7 @@
-﻿<?php
+<?php
 	require_once('connections.php');
 	require('header.php');
 	displayHeader();
-
-	if ( !isset($_SESSION['user_is_loggedin']) || ($_SESSION['user_role'] <> 2 ) ) die("Neturit tokių teisių");
 
 	if (isset($_GET['deleteItem']) && isset($_GET))
 	{
@@ -141,6 +139,6 @@
 		</div>
 
 		<button type="submit" class="btn btn-primary">Įrašyti</button>
-		<button type="button" class="btn btn-danger" onclick="location.href='prisijungimuFormavimas.php?id=<?=$_GET['id']?>&amp;deleteItem=true'">Panaikinti</button>
+		<button type="button" class="btn btn-danger" onclick="location.href='prisijungimuFormavimas2.php?id=<?=$_GET['id']?>&amp;deleteItem=true'">Panaikinti</button>
 	</form>
 	

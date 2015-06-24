@@ -2,6 +2,7 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "grupe";
+	
 	if (isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] === 2) )
 	{
 		if (isset($_GET['id']))
