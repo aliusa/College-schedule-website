@@ -42,24 +42,31 @@
 				LIMIT 1");
 ?>
 		<div class="well well-lg">
-			<table>
+			<div class="row cols-md-6">
+				<table>
 <?php
-				$arr = headings("grupe");
-				$i=0;
-				foreach ($row[0] as $key => $value) {
-					echo "<tr><td><b>".$arr[$i]."</b></td><td>$value</td></tr>";
-					$i++;
+					$arr = headings("grupe");
+					$i=0;
+					foreach ($row[0] as $key => $value) {
+						echo "<tr><td><b>".$arr[$i]."</b></td><td>$value</td></tr>";
+						$i++;
+					}
+?>
+				</table>
+<?php
+				if (isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] === 2))
+				{
+?>
+					<a class="btn btn-primary" href="grupe_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
+<?php
 				}
 ?>
-			</table>
-<?php
-			if (isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] === 2))
-			{
-?>
-			<a class="btn btn-primary" href="grupe_redaguoti.php?id=<?=$id?>" role="button">Redaguoti</a>
-<?php
-			}
-?>
+			</div><br>
+			<div class="row cols-md-6">
+				<div class="col-lg-4 col-lg-offset-4">
+					<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriuoju būdu!">
+				</div>
+			</div>
 		</div>
 
 
@@ -200,6 +207,7 @@
 		$(document).ready(function() 
 			{
 				$("#myTable").tablesorter();
+				$('#myTable').searchable();
 			}
 		);
 	</script>

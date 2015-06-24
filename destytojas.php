@@ -2,7 +2,6 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "destytojas";
-
 	if (@$_SESSION['user_role'] === 2)
 	{
 		if ( isset($_GET['id']) )
