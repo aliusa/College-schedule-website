@@ -139,8 +139,14 @@
 			ON tv.paskaitos_tipas_id = pas.id
 			ORDER BY tv.diena ASC, prlaikas ASC, palaikas ASC
 			");
-
-		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive"><thead><tr>';
+?>
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriu būdu!">
+			</div>
+		</div>
+<?php
+		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive table-hover"><thead><tr>';
 
 		// Lentelės antraštinės eilutės elementai.
 		$arr = headings("tvarkarastis");
@@ -202,6 +208,7 @@
 		$(document).ready(function() 
 			{
 				$("#myTable").tablesorter();
+				$('#myTable').searchable();
 			}
 		);
 	</script>

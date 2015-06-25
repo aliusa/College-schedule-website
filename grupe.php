@@ -109,7 +109,7 @@
 		}
 		
 
-		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive"><thead><tr>';
+		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive table-hover"><thead><tr>';
 		$arrTvarkarastis = headings("tvarkarastis");
 		//echo "<th>".$arrTvarkarastis[0]."</th>"; //id
 		echo "<th>".$arrTvarkarastis[1]."</th>"; //diena
@@ -161,8 +161,14 @@
 			ON g.studijos_id = st.id
 			ORDER BY spav DESC, fpav DESC, gpav ASC
 			');
-
-		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive"><thead><tr>';
+?>
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriu būdu!">
+			</div>
+		</div>
+<?php
+		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive table-hover"><thead><tr>';
 
 		// Lentelės antraštinės eilutės elementai.
 		$arr = headings("grupe");

@@ -68,7 +68,7 @@
 		</div><br>
 		<div class="row">
 			<div class="col-lg-4 col-lg-offset-4">
-				<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriuoju būdu!">
+				<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriu būdu!">
 			</div>
 		</div>
 	</div> <!-- well well-lg -->
@@ -117,9 +117,9 @@
 		}
 		
 ?>
-		
+
 <?php
-		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive"><thead><tr>';
+		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive table-hover"><thead><tr>';
 		/**
 		 * Tvarkaraščio lentelės antraštės.
 		 * @var array
@@ -177,8 +177,14 @@
 			WHERE paslepti = 0
 			ORDER BY pavarde ASC, vardas ASC
 			');
-
-		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive"><thead><tr>';
+?>
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriu būdu!">
+			</div>
+		</div>
+<?php
+		echo '<table id="myTable" class="tablesorter table table-striped table-condensed table-responsive table-hover"><thead><tr>';
 
 		// Lentelės antraštinės eilutės elementai.
 		$arr = headings("destytojas");

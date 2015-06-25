@@ -1,6 +1,6 @@
 ﻿<?php
 	$tinklas = "localhost";
-	$duomenu_baze = "tvarkarastis_vkk";
+	$duomenu_baze = "tvarkarastis_dev";
 	$vartotojas = "root";
 	$slaptazodis = "";
 

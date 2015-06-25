@@ -4,6 +4,7 @@
 	$currentPage = "index";
 	displayHeader($currentPage);
 
+	header("Location: grupe.php");
 ?>
 	
 <?php
