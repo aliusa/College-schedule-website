@@ -56,6 +56,8 @@
 				echo "<tr><td><b>".$arr[3]."</b></td><td>".$row[0]['elpastas']."</td></tr>"; //elpaštas
 ?>
 			</table>
+		</div>
+		<div class="row">
 <?php
 			// Redaguoti gali tik teises lygiu 2 arba pats save.
 			if ( (@$_SESSION['user_role'] === 2) || (@$_SESSION['user_id'] === $id) )
@@ -65,9 +67,7 @@
 <?php
 			}
 ?>
-		</div><br>
-		<div class="row">
-			<div class="col-lg-4 col-lg-offset-4">
+			<div class="col-xs-8 col-sm-4 col-md-4 col-lg-4">
 				<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriu būdu!">
 			</div>
 		</div>

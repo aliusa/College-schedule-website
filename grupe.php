@@ -43,7 +43,7 @@
 				LIMIT 1");
 ?>
 		<div class="well well-lg">
-			<div class="row cols-md-6">
+			<div class="row">
 				<table>
 <?php
 					$arr = headings("grupe");
@@ -54,6 +54,8 @@
 					}
 ?>
 				</table>
+			</div>
+			<div class="row">
 <?php
 				if (isset($_SESSION['user_is_loggedin']) && (@$_SESSION['user_role'] === 2))
 				{
@@ -62,10 +64,8 @@
 <?php
 				}
 ?>
-			</div><br>
-			<div class="row cols-md-6">
-				<div class="col-lg-4 col-lg-offset-4">
-					<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriuoju būdu!">
+				<div class="col-xs-8 col-sm-4 col-md-4 col-lg-4">
+					<input type="search" id="search" value="" class="form-control" placeholder="Ieškoti mišriu būdu!">
 				</div>
 			</div>
 		</div>

@@ -6,24 +6,19 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-CREATE DATABASE IF NOT EXISTS `tvarkarastis_vkk` DEFAULT CHARACTER SET utf8 COLLATE utf8_lithuanian_ci;
-USE `tvarkarastis_vkk`;
 
-DROP TABLE IF EXISTS `auditorija`;
 CREATE TABLE IF NOT EXISTS `auditorija` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(45) NOT NULL,
   `skyrius_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `dalykas`;
 CREATE TABLE IF NOT EXISTS `dalykas` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(255) NOT NULL,
   `arPaskaita` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `destytojas`;
 CREATE TABLE IF NOT EXISTS `destytojas` (
   `id` int(11) NOT NULL,
   `vardas` varchar(45) NOT NULL,
@@ -36,13 +31,11 @@ CREATE TABLE IF NOT EXISTS `destytojas` (
   `tekstas` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `forma`;
 CREATE TABLE IF NOT EXISTS `forma` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `grupe`;
 CREATE TABLE IF NOT EXISTS `grupe` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(10) NOT NULL,
@@ -52,37 +45,31 @@ CREATE TABLE IF NOT EXISTS `grupe` (
   `studijos_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `pabaigoslaikas`;
 CREATE TABLE IF NOT EXISTS `pabaigoslaikas` (
   `id` int(11) NOT NULL,
   `laikas` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `paskaitos_tipas`;
 CREATE TABLE IF NOT EXISTS `paskaitos_tipas` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `pradzioslaikas`;
 CREATE TABLE IF NOT EXISTS `pradzioslaikas` (
   `id` int(11) NOT NULL,
   `laikas` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `skyrius`;
 CREATE TABLE IF NOT EXISTS `skyrius` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `studijos`;
 CREATE TABLE IF NOT EXISTS `studijos` (
   `id` int(11) NOT NULL,
   `pavadinimas` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `tvarkarastis`;
 CREATE TABLE IF NOT EXISTS `tvarkarastis` (
   `id` int(11) NOT NULL,
   `diena` date DEFAULT NULL,
@@ -154,24 +141,6 @@ ALTER TABLE `studijos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `tvarkarastis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `auditorija`
-ADD CONSTRAINT `fk_auditorija_skyrius1` FOREIGN KEY (`skyrius_id`) REFERENCES `skyrius` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE `grupe`
-ADD CONSTRAINT `fk_grupe_forma1` FOREIGN KEY (`forma_id`) REFERENCES `forma` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_grupe_skyrius1` FOREIGN KEY (`skyrius_id`) REFERENCES `skyrius` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_grupe_studijos1` FOREIGN KEY (`studijos_id`) REFERENCES `studijos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE `tvarkarastis`
-ADD CONSTRAINT `fk_tvarkarastis_auditorija1` FOREIGN KEY (`auditorija_id`) REFERENCES `auditorija` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_tvarkarastis_dalykas` FOREIGN KEY (`dalykas_id`) REFERENCES `dalykas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_tvarkarastis_destytojas1` FOREIGN KEY (`destytojas_id`) REFERENCES `destytojas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_tvarkarastis_grupe1` FOREIGN KEY (`grupe_id`) REFERENCES `grupe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_tvarkarastis_pabaigoslaikas1` FOREIGN KEY (`pabaigoslaikas_id`) REFERENCES `pabaigoslaikas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_tvarkarastis_paskaitos_tipas1` FOREIGN KEY (`paskaitos_tipas_id`) REFERENCES `paskaitos_tipas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_tvarkarastis_pradzioslaikas1` FOREIGN KEY (`pradzioslaikas_id`) REFERENCES `pradzioslaikas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
