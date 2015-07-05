@@ -9,16 +9,14 @@
 		if (@$_SESSION['user_role'] === 1)
 		{
 			$args = [
-				"Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
-				"Ieškoti"=>"tvarkarastis_ieskoti.php"
+				"Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']
 				];
 		// Jei administratoriaus teisės.
 		} elseif (@$_SESSION['user_role'] === 2)
 		{
 			$args = [
 					"Pridėti sau įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
-					"Pridėti įrašą"=>"tvarkarastis_prideti.php",
-					"Ieškoti"=>"tvarkarastis_ieskoti.php"
+					"Pridėti įrašą"=>"tvarkarastis_prideti.php"
 					];
 		}
 	}

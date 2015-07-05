@@ -7,15 +7,13 @@
 		if (@$_SESSION['user_role'] === 1)
 		{
 			$args = [
-				"Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
-				"Ieškoti"=>"tvarkarastis_ieskoti.php"
+				"Pridėti įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id']
 				];
 		} elseif (@$_SESSION['user_role'] === 2)
 		{
 			$args = [
 					"Pridėti sau įrašą"=>"tvarkarastis_prideti.php?des=".$_SESSION['user_id'],
-					"Pridėti kitam įrašą"=>"tvarkarastis_prideti.php",
-					"Ieškoti"=>"tvarkarastis_ieskoti.php"
+					"Pridėti kitam įrašą"=>"tvarkarastis_prideti.php"
 					];
 		}
 	}
@@ -89,7 +87,7 @@
 			die("Nepateiktas tvarkaraščio ID");
 		}
 		$id = intval($_GET['id']);
-		
+
 		// Gaunam vieną eilutę iš lentelės su nurodytu ID.
 		$row = selectSingle("tvarkarastis", $id);
 
@@ -121,7 +119,7 @@
 
 		$date = date('Y-m-d', strtotime($row['diena']));
 ?>
-	
+
 		<div class="well well-lg">
 			<form method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
 				<div class="row">

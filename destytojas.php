@@ -2,10 +2,15 @@
 	require_once('connections.php');
 	require('header.php');
 	$currentPage = "destytojas";
+	// Allow for admins roles.
 	if (@$_SESSION['user_role'] === 2)
 	{
 		if ( isset($_GET['id']) )
 		{
+			/**
+			 * Nuorodos meniu juostoje, funkcijų pasirinkime.
+			 * @var array
+			 */
 			$args = [
 					"Pridėti dėstytoją"=>"destytojas_prideti.php",
 					"Pridėti šiam dėstytojui tvarkaraščio įrašą"=>"tvarkarastis_prideti.php?des=".intval($_GET['id']),
@@ -15,6 +20,7 @@
 		{
 			$args = ["Pridėti dėstytoją"=>"destytojas_prideti.php"];
 		}
+	// Allow for lecturer roles.
 	} elseif (@$_SESSION['user_role'] === 1)
 	{
 		if ( isset($_GET['id']) && (@$_SESSION['user_id'] === intval($_GET['id'])) )
@@ -27,7 +33,7 @@
 
 	if (@$_GET['id']) {
 		/**
-		 * Id yra iš GET url adreso eilutės.
+		 * ID of lecturer from GET
 		 * @var int
 		 */
 		$id = intval($_GET['id']);
