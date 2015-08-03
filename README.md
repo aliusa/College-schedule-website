@@ -16,7 +16,7 @@ Duomenys saugomi MySQL duomenų bazėje.
 ### Grupės paskaitos ![](images/grupes_paskaitos.png)
 ### Visi tvarkaraščiai /rodoma tik prisijungus kaip dėstytui arba adminui ![](images/tvarkarastis_visi.png)
 ### Grupės kūrimo forma ![](images/prideti_grupe.png)
-### Visų dėstytojų lentelė (tas pats su grupėm) ![](images/destytojai_visi.png)
+### Visų dėstytojų lentelė /tas pats su grupėm ![](images/destytojai_visi.png)
 
 
 ## Duomenų bazių modeliai:
