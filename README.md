@@ -10,3 +10,19 @@ Naudojama [Bootstrap](getbootstrap.com "Bootstrap") 3.3.4 front-end karkasa.
 [stidges/jquery-searchable](https://github.com/stidges/jquery-searchable) jQuery pluginas, paieškai gyvose lentelėse. Versija 1.11.3.
 
 Duomenys saugomi MySQL duomenų bazėje.
+
+## Ekrano vaizdai:
+### Dėstytojo paskaitos ![](images/destytojo_paskaitos.png)
+### Grupės paskaitos ![](images/grupes_paskaitos.png)
+### Visi tvarkaraščiai /rodoma tik prisijungus kaip dėstytui arba adminui ![](images/tvarkarastis_visi.png)
+### Grupės kūrimo forma ![](images/prideti_grupe.png)
+### Visų dėstytojų lentelė (tas pats su grupėm) ![](images/destytojai_visi.png)
+
+
+## Duomenų bazių modeliai:
+### Koncepcinis modelis ![](images/koncepcinis_modelis_DrawIO.png)
+
+### Loginis modelis ![](images/loginis_modelis_Dia.png)
+
+### Fizinis modelis ![](images/fizinis_modelis_MySQLWorkbench.png) ![](images/fizinis_modelis_PhpStorm.png)
+
