@@ -21,9 +21,10 @@ Duomenys saugomi MySQL duomenų bazėje.
 
 
 ## Duomenų bazių modeliai:
-### Koncepcinis modelis ![](images/koncepcinis_modelis_DrawIO.png)
+### Koncepcinis modelis /daryta su DrawIO ![](images/koncepcinis_modelis_DrawIO.png)
 
-### Loginis modelis ![](images/loginis_modelis_Dia.png)
+### Loginis modelis /daryta su Dia ![](images/loginis_modelis_Dia.png)
 
-### Fizinis modelis ![](images/fizinis_modelis_MySQLWorkbench.png) ![](images/fizinis_modelis_PhpStorm.png)
+### Fizinis modelis /daryta su MySQL Workbench ![](images/fizinis_modelis_MySQLWorkbench.png)
+### Fizinis modelis /daryta su PhpStrom ![](images/fizinis_modelis_PhpStorm.png)
 
