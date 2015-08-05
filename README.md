@@ -9,9 +9,9 @@ Naudojama [Bootstrap](getbootstrap.com "Bootstrap") 3.3.4 front-end karkasa.
 [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker) datos įvestims.  
 [stidges/jquery-searchable](https://github.com/stidges/jquery-searchable) jQuery pluginas, paieškai gyvose lentelėse. Versija 1.11.3.
 
-Duomenys saugomi MySQL duomenų bazėje.
-SQL užklausos parašytos PHP bylose (prieš tai, kai išmokau, kad galiu SQL funkcijas aprašyti pačiame MySQL).
-Dizainui buvo naudotas Bootstrap naudotojo sąsajos karkasas palengvinantis naudotojo sąsajos programavimą ir dizaino pritaikymą skirtingoms naršyklėms, skirtingoms naršyklių dydžiams.
+Duomenys saugomi MySQL duomenų bazėje.  
+SQL užklausos parašytos PHP bylose (prieš tai, kai išmokau, kad galiu SQL funkcijas aprašyti pačiame MySQL).  
+Dizainui buvo naudotas Bootstrap naudotojo sąsajos karkasas palengvinantis naudotojo sąsajos programavimą ir dizaino pritaikymą skirtingoms naršyklėms, skirtingoms naršyklių dydžiams.  
 Įdiegta papildomų jQuery bibliotų palengvinančių naudotojų naudojimąsi.
 
 ---
