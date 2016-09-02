@@ -1,0 +1,15 @@
+{
+  "autoload": {
+    "psr-4": {
+      "app\\Kaukaras\\Models\\": "app/Kaukaras/Models"
+    }
+  },
+  "require": {
+    "slim/slim": "^2.6",
+    "slim/views": "0.1.*",
+    "twig/twig": "~1.23",
+    "illuminate/database": "~5.1",
+    "bryanjhv/slim-session": "~1.0",
+    "christianklisch/slim-minify": "^0.4.4"
+  }
+}

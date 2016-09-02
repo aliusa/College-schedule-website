@@ -1,0 +1,118 @@
+/*
+ * Primary - #4CAF50 Green
+ * Dark primary - #388E3C
+ * Light primary - #4CAF50
+ * Accent - #FFC107 Amber
+ * Text - #FFFFFF
+ * Primary Text - #212121
+ * Secondary text - #727272
+ * Divider - #B6B6B6
+ */
+body {
+    background-color: #FFFFFF;
+}
+
+table.header_center > thead > tr > td, .header_row {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12pt;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+}
+
+table.content_center > tbody > tr, td.content_center, div.content_center {
+    text-align: center;
+}
+
+.tbl_error_string {
+    color: #FF9800;
+    font-weight: bold;
+    text-align: center;
+}
+
+.string_success {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
+.string_danger {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.page_title {
+    text-align: center;
+}
+
+div.page_title span {
+    font-size: x-large;
+    font-weight: bold;
+    color: #212121;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.letter_group > h5 { /* for letter_group */
+    font-weight: bold;
+}
+
+td.sidepanel_left, td.sidepanel_right {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+td.sidepanel_left {
+    width: 100px;
+}
+
+td.sidepanel_right {
+    width: 100px;
+}
+
+/*region Header*/
+#header {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 50px;
+}
+
+#header #header_pic {
+    background: url("../images/vkk_logo.png") no-repeat center #ffffff;
+    background-size: auto 50px;
+    height: 50px;
+    display: block;
+}
+
+#header #header_text {
+    font-size: 18pt;
+    font-style: italic;
+    color: #4CAF50;
+    font-family: "Times New Roman", Tahoma, Arial, Helvetica, sans-serif;
+}
+
+#header #header_pic {
+    background: url("../images/vkk_logo.png") no-repeat center #ffffff;
+    background-size: auto 50px;
+    height: 50px;
+    display: block;
+}
+
+@media screen and (max-width: 1000px) {
+    #header {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #header #header_text {
+        font-size: 16pt;
+    }
+}
+
+/*endregion*/

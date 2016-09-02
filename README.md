@@ -1,36 +1,34 @@
-﻿Tvarkaraščio web aplikacija
-========================
+﻿## College shedule website
+Website is aimed at colleges and universities to manage it's lecture schedule. It allows manage everyting to make schedules - groups, professors, subjects, etc. Admin website is seperated from main which needs login credentials.
 
-Naudojama [jQuery](https://jquery.com/)  1.11.3  javascript biblioteka.  
-Naudojama [Bootstrap](getbootstrap.com "Bootstrap") 3.3.4 front-end karkasa.  
-[tablesorter](http://tablesorter.com/docs/) 2.0.5 lentelių duomenims filtruoti  
-[Bootstrap Multiselect](https://github.com/davidstutz/bootstrap-multiselect) 2.0 jquery plugin'as formos duomenims "dropdown" elemente.  
-<strike>[Awesome Bootstrap Checkbox](https://github.com/flatlogic/awesome-bootstrap-checkbox)</strike> Bootstrap pluginas checkbox formų v0.3.4.  
-[bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker) datos įvestims.  
-[stidges/jquery-searchable](https://github.com/stidges/jquery-searchable) jQuery pluginas, paieškai gyvose lentelėse. Versija 1.11.3.
+### Used libraries
+[jQuery](https://jquery.com/)  2.1.13  
+[Bootstrap](getbootstrap.com) 3.3.6  
+[Bootstrap Multiselect](https://github.com/davidstutz/bootstrap-multiselect) 2.0  
+[bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker) 1.6.1  
+[JBox](https://jbox.com/) 0.3.2  
+[Font Awesome](fontawesome.io/) 4.6.3  
+[D3.js](https://d3js.org/) 3.5.17  
+[wa0x6e/cal-heatmap](https://github.com/wa0x6e/cal-heatmap) 3.6.0
 
-Duomenys saugomi MySQL duomenų bazėje.  
-SQL užklausos parašytos PHP bylose (prieš tai, kai išmokau, kad galiu SQL funkcijas aprašyti pačiame MySQL).  
-Dizainui buvo naudotas Bootstrap naudotojo sąsajos karkasas palengvinantis naudotojo sąsajos programavimą ir dizaino pritaikymą skirtingoms naršyklėms, skirtingoms naršyklių dydžiams.  
-Įdiegta papildomų jQuery bibliotų palengvinančių naudotojų naudojimąsi.
+## Documentation
+Admin documentation accessible in admin website.
 
----
+### Contributing
+All issues ant pull request must be filled on [aliusa/College-schedule-website](https://github.com/aliusa/College-schedule-website) repository.
 
-## Ekrano vaizdai:
-### Dėstytojo paskaitos ![](images/destytojo_paskaitos.png)
-### Grupės paskaitos ![](images/grupes_paskaitos.png)
-### Visi tvarkaraščiai /rodoma tik prisijungus kaip dėstytui arba adminui ![](images/tvarkarastis_visi.png)
-### Grupės kūrimo forma ![](images/prideti_grupe.png)
-### Visų grupių lentelė ![](images/grupes_visos.png)
-### Visų dėstytojų lentelė ![](images/destytojai_visi.png)
+### License
+```
+ Copyright 2016 aliusa  
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
 
----
-
-## Duomenų bazių modeliai:
-### Koncepcinis modelis /daryta su DrawIO ![](images/koncepcinis_modelis_DrawIO.png)
-
-### Loginis modelis /daryta su Dia ![](images/loginis_modelis_Dia.png)
-
-### Fizinis modelis /daryta su MySQL Workbench ![](images/fizinis_modelis_MySQLWorkbench.png)
-### Fizinis modelis /daryta su PhpStrom ![](images/fizinis_modelis_PhpStorm.png)
-
+   http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
