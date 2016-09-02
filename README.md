@@ -1,6 +1,8 @@
 ﻿## College shedule website
 Website is aimed at colleges and universities to manage it's lecture schedule. It allows manage everyting to make schedules - groups, professors, subjects, etc. Admin website is seperated from main which needs login credentials.
 
+Made with [slimphp/Slim](https://github.com/slimphp/Slim) framework, MariaDB, PhpStorm IDE.
+
 ### Used libraries
 [jQuery](https://jquery.com/)  2.1.13  
 [Bootstrap](getbootstrap.com) 3.3.6  
