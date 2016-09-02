@@ -17,7 +17,7 @@ Made with [slimphp/Slim](https://github.com/slimphp/Slim) framework, MariaDB, Ph
 Admin documentation accessible in admin website.
 
 ### Contributing
-All issues ant pull request must be filled on [aliusa/College-schedule-website](https://github.com/aliusa/College-schedule-website) repository.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### License
 ```
