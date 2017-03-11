@@ -11,15 +11,16 @@
 
 namespace Symfony\Component\Translation\Tests\Loader;
 
-use Symfony\Component\Config\Resource\FileResource;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Loader\PhpFileLoader;
+use Symfony\Component\Config\Resource\FileResource;
 
-class PhpFileLoaderTest extends \PHPUnit_Framework_TestCase
+class PhpFileLoaderTest extends TestCase
 {
     public function testLoad()
     {
         $loader = new PhpFileLoader();
-        $resource = __DIR__ . '/../fixtures/resources.php';
+        $resource = __DIR__.'/../fixtures/resources.php';
         $catalogue = $loader->load($resource, 'en', 'domain1');
 
         $this->assertEquals(array('foo' => 'bar'), $catalogue->all('domain1'));
@@ -33,7 +34,7 @@ class PhpFileLoaderTest extends \PHPUnit_Framework_TestCase
     public function testLoadNonExistingResource()
     {
         $loader = new PhpFileLoader();
-        $resource = __DIR__ . '/../fixtures/non-existing.php';
+        $resource = __DIR__.'/../fixtures/non-existing.php';
         $loader->load($resource, 'en', 'domain1');
     }
 

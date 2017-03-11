@@ -11,10 +11,11 @@
 
 namespace Symfony\Component\Translation\Tests\Dumper;
 
-use Symfony\Component\Translation\Dumper\PoFileDumper;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageCatalogue;
+use Symfony\Component\Translation\Dumper\PoFileDumper;
 
-class PoFileDumperTest extends \PHPUnit_Framework_TestCase
+class PoFileDumperTest extends TestCase
 {
     public function testFormatCatalogue()
     {
@@ -23,6 +24,6 @@ class PoFileDumperTest extends \PHPUnit_Framework_TestCase
 
         $dumper = new PoFileDumper();
 
-        $this->assertStringEqualsFile(__DIR__ . '/../fixtures/resources.po', $dumper->formatCatalogue($catalogue, 'messages'));
+        $this->assertStringEqualsFile(__DIR__.'/../fixtures/resources.po', $dumper->formatCatalogue($catalogue, 'messages'));
     }
 }

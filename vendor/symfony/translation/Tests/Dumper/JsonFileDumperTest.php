@@ -11,10 +11,11 @@
 
 namespace Symfony\Component\Translation\Tests\Dumper;
 
-use Symfony\Component\Translation\Dumper\JsonFileDumper;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageCatalogue;
+use Symfony\Component\Translation\Dumper\JsonFileDumper;
 
-class JsonFileDumperTest extends \PHPUnit_Framework_TestCase
+class JsonFileDumperTest extends TestCase
 {
     public function testFormatCatalogue()
     {
@@ -23,7 +24,7 @@ class JsonFileDumperTest extends \PHPUnit_Framework_TestCase
 
         $dumper = new JsonFileDumper();
 
-        $this->assertStringEqualsFile(__DIR__ . '/../fixtures/resources.json', $dumper->formatCatalogue($catalogue, 'messages'));
+        $this->assertStringEqualsFile(__DIR__.'/../fixtures/resources.json', $dumper->formatCatalogue($catalogue, 'messages'));
     }
 
     public function testDumpWithCustomEncoding()
@@ -33,6 +34,6 @@ class JsonFileDumperTest extends \PHPUnit_Framework_TestCase
 
         $dumper = new JsonFileDumper();
 
-        $this->assertStringEqualsFile(__DIR__ . '/../fixtures/resources.dump.json', $dumper->formatCatalogue($catalogue, 'messages', array('json_encoding' => JSON_HEX_QUOT)));
+        $this->assertStringEqualsFile(__DIR__.'/../fixtures/resources.dump.json', $dumper->formatCatalogue($catalogue, 'messages', array('json_encoding' => JSON_HEX_QUOT)));
     }
 }

@@ -3,25 +3,27 @@
 /*
  * This file is part of the Carbon package.
  *
- * (c) Michael Hohl <me@michaelhohl.net>
+ * (c) Brian Nesbitt <brian@nesbot.com>
  *
- * This file is released under the terms of CC0.
- * CC0 is even more permissive than the MIT license, allowing you to use the code in
- * any manner you want, without any copyright headers, notices, or other attribution.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-/**
- * Translation messages.  See http://symfony.com/doc/current/book/translation.html
- * for possible formats.
- */
 return array(
     'year' => '1 Jahr|:count Jahre',
+    'y' => '1J|:countJ',
     'month' => '1 Monat|:count Monate',
+    'm' => '1Mon|:countMon',
     'week' => '1 Woche|:count Wochen',
+    'w' => '1Wo|:countWo',
     'day' => '1 Tag|:count Tage',
+    'd' => '1Tg|:countTg',
     'hour' => '1 Stunde|:count Stunden',
+    'h' => '1Std|:countStd',
     'minute' => '1 Minute|:count Minuten',
+    'min' => '1Min|:countMin',
     'second' => '1 Sekunde|:count Sekunden',
+    's' => '1Sek|:countSek',
     'ago' => 'vor :time',
     'from_now' => 'in :time',
     'after' => ':time später',

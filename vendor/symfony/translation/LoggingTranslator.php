@@ -12,6 +12,7 @@
 namespace Symfony\Component\Translation;
 
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Translation\Exception\InvalidArgumentException;
 
 /**
  * @author Abdellatif Ait boudad <a.aitboudad@gmail.com>
@@ -30,12 +31,12 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface
 
     /**
      * @param TranslatorInterface $translator The translator must implement TranslatorBagInterface
-     * @param LoggerInterface $logger
+     * @param LoggerInterface     $logger
      */
     public function __construct(TranslatorInterface $translator, LoggerInterface $logger)
     {
         if (!$translator instanceof TranslatorBagInterface) {
-            throw new \InvalidArgumentException(sprintf('The Translator "%s" must implement TranslatorInterface and TranslatorBagInterface.', get_class($translator)));
+            throw new InvalidArgumentException(sprintf('The Translator "%s" must implement TranslatorInterface and TranslatorBagInterface.', get_class($translator)));
         }
 
         $this->translator = $translator;
@@ -51,32 +52,6 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface
         $this->log($id, $domain, $locale);
 
         return $trans;
-    }
-
-    /**
-     * Logs for missing translations.
-     *
-     * @param string $id
-     * @param string|null $domain
-     * @param string|null $locale
-     */
-    private function log($id, $domain, $locale)
-    {
-        if (null === $domain) {
-            $domain = 'messages';
-        }
-
-        $id = (string)$id;
-        $catalogue = $this->translator->getCatalogue($locale);
-        if ($catalogue->defines($id, $domain)) {
-            return;
-        }
-
-        if ($catalogue->has($id, $domain)) {
-            $this->logger->debug('Translation use fallback catalogue.', array('id' => $id, 'domain' => $domain, 'locale' => $catalogue->getLocale()));
-        } else {
-            $this->logger->warning('Translation not found.', array('id' => $id, 'domain' => $domain, 'locale' => $catalogue->getLocale()));
-        }
     }
 
     /**
@@ -115,10 +90,50 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface
     }
 
     /**
+     * Gets the fallback locales.
+     *
+     * @return array $locales The fallback locales
+     */
+    public function getFallbackLocales()
+    {
+        if ($this->translator instanceof Translator) {
+            return $this->translator->getFallbackLocales();
+        }
+
+        return array();
+    }
+
+    /**
      * Passes through all unknown calls onto the translator object.
      */
     public function __call($method, $args)
     {
         return call_user_func_array(array($this->translator, $method), $args);
+    }
+
+    /**
+     * Logs for missing translations.
+     *
+     * @param string      $id
+     * @param string|null $domain
+     * @param string|null $locale
+     */
+    private function log($id, $domain, $locale)
+    {
+        if (null === $domain) {
+            $domain = 'messages';
+        }
+
+        $id = (string) $id;
+        $catalogue = $this->translator->getCatalogue($locale);
+        if ($catalogue->defines($id, $domain)) {
+            return;
+        }
+
+        if ($catalogue->has($id, $domain)) {
+            $this->logger->debug('Translation use fallback catalogue.', array('id' => $id, 'domain' => $domain, 'locale' => $catalogue->getLocale()));
+        } else {
+            $this->logger->warning('Translation not found.', array('id' => $id, 'domain' => $domain, 'locale' => $catalogue->getLocale()));
+        }
     }
 }

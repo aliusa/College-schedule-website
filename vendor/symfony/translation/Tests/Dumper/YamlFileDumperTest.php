@@ -11,10 +11,11 @@
 
 namespace Symfony\Component\Translation\Tests\Dumper;
 
-use Symfony\Component\Translation\Dumper\YamlFileDumper;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageCatalogue;
+use Symfony\Component\Translation\Dumper\YamlFileDumper;
 
-class YamlFileDumperTest extends \PHPUnit_Framework_TestCase
+class YamlFileDumperTest extends TestCase
 {
     public function testTreeFormatCatalogue()
     {
@@ -27,7 +28,7 @@ class YamlFileDumperTest extends \PHPUnit_Framework_TestCase
 
         $dumper = new YamlFileDumper();
 
-        $this->assertStringEqualsFile(__DIR__ . '/../fixtures/messages.yml', $dumper->formatCatalogue($catalogue, 'messages', array('as_tree' => true, 'inline' => 999)));
+        $this->assertStringEqualsFile(__DIR__.'/../fixtures/messages.yml', $dumper->formatCatalogue($catalogue, 'messages', array('as_tree' => true, 'inline' => 999)));
     }
 
     public function testLinearFormatCatalogue()
@@ -41,6 +42,6 @@ class YamlFileDumperTest extends \PHPUnit_Framework_TestCase
 
         $dumper = new YamlFileDumper();
 
-        $this->assertStringEqualsFile(__DIR__ . '/../fixtures/messages_linear.yml', $dumper->formatCatalogue($catalogue, 'messages'));
+        $this->assertStringEqualsFile(__DIR__.'/../fixtures/messages_linear.yml', $dumper->formatCatalogue($catalogue, 'messages'));
     }
 }

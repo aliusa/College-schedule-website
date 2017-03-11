@@ -11,10 +11,11 @@
 
 namespace Symfony\Component\Translation\Tests\Dumper;
 
-use Symfony\Component\Translation\Dumper\IcuResFileDumper;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageCatalogue;
+use Symfony\Component\Translation\Dumper\IcuResFileDumper;
 
-class IcuResFileDumperTest extends \PHPUnit_Framework_TestCase
+class IcuResFileDumperTest extends TestCase
 {
     public function testFormatCatalogue()
     {
@@ -23,6 +24,6 @@ class IcuResFileDumperTest extends \PHPUnit_Framework_TestCase
 
         $dumper = new IcuResFileDumper();
 
-        $this->assertStringEqualsFile(__DIR__ . '/../fixtures/resourcebundle/res/en.res', $dumper->formatCatalogue($catalogue, 'messages'));
+        $this->assertStringEqualsFile(__DIR__.'/../fixtures/resourcebundle/res/en.res', $dumper->formatCatalogue($catalogue, 'messages'));
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Carbon package.
  *
@@ -6,16 +7,23 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
  */
+
 return array(
     'year' => '1 aasta|:count aastat',
+    'y' => '1 aasta|:count aastat',
     'month' => '1 kuu|:count kuud',
+    'm' => '1 kuu|:count kuud',
     'week' => '1 nädal|:count nädalat',
+    'w' => '1 nädal|:count nädalat',
     'day' => '1 päev|:count päeva',
+    'd' => '1 päev|:count päeva',
     'hour' => '1 tund|:count tundi',
+    'h' => '1 tund|:count tundi',
     'minute' => '1 minut|:count minutit',
+    'min' => '1 minut|:count minutit',
     'second' => '1 sekund|:count sekundit',
+    's' => '1 sekund|:count sekundit',
     'ago' => ':time tagasi',
     'from_now' => ':time pärast',
     'after' => ':time pärast',

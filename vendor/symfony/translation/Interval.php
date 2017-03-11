@@ -11,6 +11,8 @@
 
 namespace Symfony\Component\Translation;
 
+use Symfony\Component\Translation\Exception\InvalidArgumentException;
+
 /**
  * Tests if a given number belongs to a given math interval.
  *
@@ -36,19 +38,19 @@ class Interval
     /**
      * Tests if the given number is in the math interval.
      *
-     * @param int $number A number
+     * @param int    $number   A number
      * @param string $interval An interval
      *
      * @return bool
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public static function test($number, $interval)
     {
         $interval = trim($interval);
 
-        if (!preg_match('/^' . self::getIntervalRegexp() . '$/x', $interval, $matches)) {
-            throw new \InvalidArgumentException(sprintf('"%s" is not a valid interval.', $interval));
+        if (!preg_match('/^'.self::getIntervalRegexp().'$/x', $interval, $matches)) {
+            throw new InvalidArgumentException(sprintf('"%s" is not a valid interval.', $interval));
         }
 
         if ($matches[1]) {
@@ -63,7 +65,8 @@ class Interval
 
             return
                 ('[' === $matches['left_delimiter'] ? $number >= $leftNumber : $number > $leftNumber)
-                && (']' === $matches['right_delimiter'] ? $number <= $rightNumber : $number < $rightNumber);
+                && (']' === $matches['right_delimiter'] ? $number <= $rightNumber : $number < $rightNumber)
+            ;
         }
 
         return false;
@@ -101,6 +104,6 @@ EOF;
             return -log(0);
         }
 
-        return (float)$number;
+        return (float) $number;
     }
 }

@@ -11,10 +11,11 @@
 
 namespace Symfony\Component\Translation\Tests\Catalogue;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageCatalogue;
 use Symfony\Component\Translation\MessageCatalogueInterface;
 
-abstract class AbstractOperationTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractOperationTest extends TestCase
 {
     public function testGetEmptyDomains()
     {
@@ -26,8 +27,6 @@ abstract class AbstractOperationTest extends \PHPUnit_Framework_TestCase
             )->getDomains()
         );
     }
-
-    abstract protected function createOperation(MessageCatalogueInterface $source, MessageCatalogueInterface $target);
 
     public function testGetMergedDomains()
     {
@@ -42,7 +41,7 @@ abstract class AbstractOperationTest extends \PHPUnit_Framework_TestCase
 
     public function testGetMessagesFromUnknownDomain()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}('InvalidArgumentException');
         $this->createOperation(
             new MessageCatalogue('en'),
             new MessageCatalogue('en')
@@ -70,4 +69,6 @@ abstract class AbstractOperationTest extends \PHPUnit_Framework_TestCase
             )->getResult()
         );
     }
+
+    abstract protected function createOperation(MessageCatalogueInterface $source, MessageCatalogueInterface $target);
 }

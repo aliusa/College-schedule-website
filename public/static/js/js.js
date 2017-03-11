@@ -1,1 +1,0 @@
-function keypressNavigation(){document.onkeydown=function(e){switch(e.keyCode){case 65:case 37:document.getElementById("button_left").click();break;case 38:break;case 68:case 39:document.getElementById("button_right").click();break;case 40:break;}};}$(document).ready(function(){console.log("\n\tSusidomėjai kodu? Prisidėk prie puslapio tobulinimo!\n\n");});
