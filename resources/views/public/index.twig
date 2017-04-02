@@ -1,0 +1,36 @@
+{% extends 'public.header' %}
+{% block title %}{% endblock %}
+
+{% block main %}
+    {% if faculties is empty %}
+        <p>Nėra sukurtų fakultetų.</p>
+    {% else %}
+        {% for faculty in faculties %}
+            <div style="overflow: auto;">
+                <table class="table table-bordered table-condensed header_center content_center">
+                    <tbody>
+                    <tr>
+                        <td class="header_row" colspan="{{ faculty.fields|length }}">{{ faculty.name }}</td>
+                    </tr>
+                    <tr>
+                        {% if faculty.fields is empty %}
+                            <td><span class="tbl_error_string">Nėra įtrauktų grupių!</span></td>
+                        {% else %}
+                            {% for key, activeField in faculty.fields %}
+                                <td>
+                                    <b>{{ activeField.name }}</b>
+                                    <br/>
+                                    {% for cluster in activeField.clusters %}
+                                        <a href="{{ route('cluster', {'id':cluster.cluster_id}) }}">{{ cluster.name }}</a>
+                                        <br/>
+                                    {% endfor %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

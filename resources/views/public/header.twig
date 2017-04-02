@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="lt">
+    <title>VKK Tvarkaraštis {% block title %}{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="VKK tvarkaraštis">
+    <meta name="keywords"
+          content="vkk, tvarkarastis, kaukaras, vilniaus kooperacijos kolegija, schedule, kolegija, paskaitų tvarkaraštis">
+    <meta name="author" content="Alius Sultanovas">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+    <link rel="shortcut icon" href="{{ asset('/icons/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('/icons/favicon.png') }}" type="image/x-icon">
+
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('/css/style.css?v20160610') }}" rel="stylesheet">
+    <script async src="{{ asset('/js/js.js?v20160501') }}"></script>
+
+    <script async src="{{ asset('/plugins/popupdatepicker/ts_picker.js') }}"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('/plugins/font-awesome-4.6.3/css/font-awesome.min.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <div id="header">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="http://www.vkk.lt/" target="_top">
+                    <div id="header_pic" class="left-side"></div>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <span id="header_text">PASKAITŲ TVARKARAŠČIO INFORMACINĖ SISTEMA</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ route('index') }}" target="_self">VKK</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li {% if page== 'GROUP' %}class="active"{% endif %}><a href="{{ route('index') }}">Grupės</a></li>
+                    <li {% if page== 'PROFESSOR' %}class="active"{% endif %}><a href="{{ route('professor_list') }}">Dėstytojai</a>
+                    </li>
+                    <li {% if page== 'SUBJECT' %}class="active"{% endif %}><a
+                                href="{{ route('subject_list') }}">Dalykai</a></li>
+                    <li {% if page== 'CLASSROOM' %}class="active"{% endif %}><a href="{{ route('classroom_list') }}">Auditorijos</a>
+                    </li>
+                    <li {% if page==
+                        'DAY' %}class="active"{% endif %}><a href="{{ route('day_list') }}">Dienos</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+    {% block main %}{% endblock %}
+    <footer>
+        <a href="http://vkk.lt" target="_blank">Vilniaus kooperacijos kolegija</a>.
+        <a href="{{ route('help') }}" target="_top">PAGALBA</a>.
+        Sprendimas: A.S. @2016
+    </footer>
+</div> <!-- container -->
+
+<script async src="{{ asset('/js/google_analytics.js') }}" rel="prefetch"></script>
+</body>
+</html>

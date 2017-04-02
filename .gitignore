@@ -13,4 +13,7 @@ Homestead.yaml
 #Ignores folder created by PhpStorm.
 
 .git/
-.idea/
+/vendor
+database/factories/
+database/migrations/
+database/seeds/
