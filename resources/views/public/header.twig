@@ -71,14 +71,14 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li {% if page== 'GROUP' %}class="active"{% endif %}><a href="{{ route('index') }}">Grupės</a></li>
-                    <li {% if page== 'PROFESSOR' %}class="active"{% endif %}><a href="{{ route('professor_list') }}">Dėstytojai</a>
+                    <li {% if page == 'GROUP' %}class="active"{% endif %}><a href="{{ route('index') }}">Grupės</a></li>
+                    <li {% if page == 'PROFESSOR' %}class="active"{% endif %}><a href="{{ route('professor_list') }}">Dėstytojai</a>
                     </li>
-                    <li {% if page== 'SUBJECT' %}class="active"{% endif %}><a
+                    <li {% if page == 'SUBJECT' %}class="active"{% endif %}><a
                                 href="{{ route('subject_list') }}">Dalykai</a></li>
-                    <li {% if page== 'CLASSROOM' %}class="active"{% endif %}><a href="{{ route('classroom_list') }}">Auditorijos</a>
+                    <li {% if page == 'CLASSROOM' %}class="active"{% endif %}><a href="{{ route('classroom_list') }}">Auditorijos</a>
                     </li>
-                    <li {% if page==
+                    <li {% if page ==
                         'DAY' %}class="active"{% endif %}><a href="{{ route('day_list') }}">Dienos</a></li>
                 </ul>
             </div><!--/.nav-collapse -->

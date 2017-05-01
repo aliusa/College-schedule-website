@@ -17,7 +17,7 @@ Route::get('/subject', 'PageController@index')->name('subject_list');
 Route::get('/classroom', 'PageController@index')->name('classroom_list');
 Route::get('/day', 'PageController@index')->name('day_list');
 Route::get('/help', 'PageController@index')->name('help');
-Route::get('/group/{id}', 'PageController@index')->name('cluster');
+Route::get('/group/{cluster}', 'GroupController@show')->name('cluster');
 
 
 Route::get('/test', 'TestController@test')->name('test');

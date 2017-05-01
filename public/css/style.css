@@ -1,0 +1,22 @@
+/*index*/
+#header #header_pic {
+    background: url(../images/vkk_logo.png) no-repeat center #ffffff;
+    background-size: auto 50px;
+    height: 50px;
+    display: block;
+}
+#header #header_text {
+    font-size: 18pt;
+    font-style: italic;
+    color: #4CAF50;
+    font-family: "Times New Roman", Tahoma, Arial, Helvetica, sans-serif;
+}
+table.table {
+    text-align: center;
+}
+td.header_row {
+    font-weight: bold;
+    font-size: 12pt;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+}

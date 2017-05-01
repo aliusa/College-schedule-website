@@ -102,17 +102,17 @@ class Cluster extends Model
     }
 
     /**
-     * @return Collection
+     * @return OptionsDetails
      */
-    public function field(): Collection
+    public function field(): OptionsDetails
     {
-        return $this->belongsTo(OptionsDetails::class, 'options_details_id', 'field_id')->getResults();
+        return $this->belongsTo(OptionsDetails::class, 'field_id', 'options_details_id')->getResults();
     }
 
     /**
-     * @return Collection
+     * @return Faculty
      */
-    public function faculty(): Collection
+    public function faculty():Faculty
     {
         return $this->belongsTo(Faculty::class, 'faculty_id', 'faculty_id')->getResults();
     }

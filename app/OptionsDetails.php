@@ -47,9 +47,7 @@ class OptionsDetails extends Model
      */
     public static function findById(int $id)
     {
-        return self::all()->filter(function (OptionsDetails $optionDetails) use ($id) {
-            return intval($optionDetails->options_details_id) === $id;
-        })->first();
+        return self::find($id);
     }
 
     /**

@@ -14,7 +14,7 @@ Homestead.yaml
 
 .git/
 /vendor
-!/vendor/autoload.php
-database/factories/
-database/migrations/
-database/seeds/
+#/vendor/autoload.php
+!database/factories/
+!database/migrations/
+!database/seeds/
