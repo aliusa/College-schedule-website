@@ -8,13 +8,16 @@
 Homestead.json
 Homestead.yaml
 .env
+composer.lock
 
 
 #Ignores folder created by PhpStorm.
 
-.git/
 /vendor
 #/vendor/autoload.php
 !database/factories/
 !database/migrations/
 !database/seeds/
+
+#Git specific folders
+.git/

@@ -20,3 +20,11 @@ td.header_row {
     background-color: #4CAF50;
     color: #FFFFFF;
 }
+
+/*group page*/
+h3 {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #212121;
+}
